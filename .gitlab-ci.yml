@@ -14,6 +14,7 @@ tests:
     - apt-get update -qy
     - curl -sL https://deb.nodesource.com/setup_11.x | bash -
     - apt-get install -y nodejs
+    - gem install bundler -v 2.0.1
     - bundle install --without postgres production --jobs $(nproc) "${FLAGS[@]}"
     - cp config/gitlab-database.yml config/database.yml
     - RAILS_ENV=test bundle exec rails db:create db:schema:load
