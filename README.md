@@ -1,24 +1,89 @@
-# README
+# BJJ Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of Contents
+* About
+* Getting started
+    * Installation
+    * Usage
+* Contributing
+    * Code Style
+    * Testing
+* TODO
 
-Things you may want to cover:
+## About
+This project is a platform for BJJ practitioners to view industry events in a filterable event listing.
 
-* Ruby version
+[Staging Environment](https://bjj-tracker-staging.herokuapp.com/)
+[Production Environment](https://bjj-tracker-prod.herokuapp.com/)
 
-* System dependencies
+## Getting Started
+### Installation
+To install, fork the repo and execute:
 
-* Configuration
+```
+git clone git@gitlab.com:d3d1rty/bjj-tracker.git
+cd bjj-tracker
+bundle
+yarn install
+docker-compose build
+```
 
-* Database creation
+Then, create the `.env` file and enable user signup.
 
-* Database initialization
+```
+ALLOW_SIGNUP=true
+```
 
-* How to run the test suite
+Start the server.
+```
+docker-compose up -d
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Create the database and run the migrations.
 
-* Deployment instructions
+```
+docker-compose run web bundle exec rails db:create
+docker-compose run web bundle exec rails db:migrate
+```
 
-* ...
+To signup, navigate to `http://localhost:3000/sign_up`
+
+
+### Usage
+Usage instructions will be published as features are rolled out.
+
+## Contributing
+### Code Style
+For ruby, we use Rubocop to enforce code style and Reek to find code smells.
+To manually run `rubocop`, you can run the following commands:
+
+```
+# Run rubocop for the entire project
+bundle exec rubocop
+# Run rubocop for a specific file
+bundle exec rubocop foo/bar.rb
+```
+
+To manually run `reek`, you can execute:
+```
+bundle exec reek
+```
+
+For Javascript, we use ESLint with the Standard rules. To run the linter, execute:
+```
+eslint app/assets/javascripts
+```
+
+For stylesheets, we use Stylelint. To run the linter, execute:
+```
+stylelint app/assets/stylesheets
+```
+
+### Testing
+The test suite is executed on every commit to GitLab, and it can be run manually on your local machine:
+```
+docker-compose run web bundle exec rspec
+```
+
+## TODO
+* Everything.
