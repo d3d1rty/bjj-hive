@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+##
+# Controller for sessions.
 class SessionsController < Clearance::SessionsController
   ##
   # GET /session/new

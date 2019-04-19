@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+##
+# Controller for the user actions.
 class UsersController < Clearance::UsersController
   before_action :set_user, only: %i[show edit edit_profile update destroy]
   before_action :protect_user_resources, only: %i[edit edit_profile update destroy]

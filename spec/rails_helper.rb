@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'spec_helper'
 require 'support/factory_bot'
 require 'clearance/rspec'
 require 'database_cleaner'
 
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
@@ -36,6 +38,8 @@ RSpec.configure do |config|
 end
 
 module ActionDispatch
+  ##
+  # Base class for integration test.
   class IntegrationTest
     include Clearance::Testing::ControllerHelpers
   end
