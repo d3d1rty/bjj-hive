@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Clearance routes to constrains signed in users to the dashboard
   constraints Clearance::Constraints::SignedIn.new do

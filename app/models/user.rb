@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+##
+# Model for user.
 class User < ApplicationRecord
   include Clearance::User
 

@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+##
+# Controller for the dashboard
 class DashboardController < ApplicationController
   before_action :require_login
 
