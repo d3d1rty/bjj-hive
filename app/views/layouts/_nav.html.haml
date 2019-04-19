@@ -1,0 +1,15 @@
+%nav.MushakaNavbar
+  .MushakaNavbar__navbar-header
+    %a{ href: '#', id: 'js-navbar-toggle', class: 'MushakaNavbar__navbar-toggle' }
+      = icon 'fas', 'bars'
+    %span.MushakaNavbar__navbar-brand BJJ Tracker
+  .MushakaNavbar__navbar-menu
+    %ul
+      - if signed_in?
+        %li
+          = link_to I18n.t('navigation.auth.sign_out'), sign_out_path, method: :delete, class: 'MushakaNavbar__navbar-link'
+      - else
+        %li
+          = link_to I18n.t('navigation.public.sign_up'), sign_up_path, class: 'MushakaNavbar__navbar-link'
+        %li
+          = link_to I18n.t('navigation.public.sign_in'), sign_in_path, class: 'MushakaNavbar__navbar-link'

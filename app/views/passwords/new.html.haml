@@ -1,0 +1,9 @@
+.PasswordCard
+  .PasswordCard__card-body_rounded
+    = form_for :password, url: passwords_path do |form|
+      .form
+        .form-group
+          = form.label :email
+          = form.text_field :email, type: 'email'
+        .form-action
+          = form.submit 'Reset Password', class: 'PasswordCard__button_solid'
