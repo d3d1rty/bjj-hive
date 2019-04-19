@@ -13,6 +13,8 @@ gem 'puma', '~> 3.11'
 gem 'haml-rails', '~> 1.0'
 # Use SCSS for stylesheets
 gem 'sassc-rails', '~> 2.1'
+# Use Font Awesome for iconography
+gem 'font-awesome-sass', '~> 5.8.1'
 # Use normalize for CSS resets
 gem 'rails-assets-normalize-css', source: 'https://rails-assets.org'
 # Use Bourbon for CSS

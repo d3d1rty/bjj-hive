@@ -1,0 +1,8 @@
+- if flash[:alert]
+  .MushakaHeader.MushakaHeader_alert
+    %ul
+      - flash[:alert].each do |msg|
+        %li= msg
+- elsif flash[:notice]
+  .MushakaHeader.MushakaHeader_notice
+    %p= flash[:notice]
