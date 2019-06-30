@@ -1,0 +1,41 @@
+= form_for [@user, @event] do |f|
+  .EventForm
+    = f.hidden_field :user_id, value: @user.id
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.name')
+      = f.text_field :name
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.location')
+      = f.collection_select :location_id, @user.locations.all, :id, ->(location){ location.name }
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.category')
+      = f.select :category, options_for_select(Event.permitted_categories)
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.summary')
+      ~ f.text_area :summary
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.fee')
+      = f.number_field :fee, value: number_to_currency(f.object.fee.to_f, delimiter: '', unit: ''), step: 0.01
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.start_date')
+      = f.date_field :start_date, start_year: DateTime.now.year, end_year: (DateTime.now.year + 4), placeholder: I18n.t('pages.events.form.date_placeholder')
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.start_time')
+      .EventForm__time-field-group
+        = f.select :start_time_hr, hours_for_form, selected: (hour_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
+        = f.select :start_time_min, minutes_for_form, selected: (minute_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
+        = f.select :start_time_period, %w(am pm), selected: (period_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.end_date')
+      = f.date_field :end_date, start_year: DateTime.now.year, end_year: (DateTime.now.year + 4), placeholder: I18n.t('pages.events.form.date_placeholder')
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.end_time')
+      .EventForm__time-field-group
+        = f.select :end_time_hr, hours_for_form, selected: (hour_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
+        = f.select :end_time_min, minutes_for_form, selected: (minute_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
+        = f.select :end_time_period, %w(am pm), selected: (period_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
+    .EventForm__form-group
+      = f.label I18n.t('models.event.fields.time_zone')
+      = f.time_zone_select :time_zone, Event.preferred_time_zones
+    .EventForm__form-action
+      = f.submit I18n.t('pages.events.form.form_action')

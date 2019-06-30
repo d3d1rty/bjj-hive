@@ -1,26 +1,27 @@
 .UserCard
   .UserCard__card-body_rounded-top
-    = form_for @user do |form|
-      .form
-        .form-group
-          = form.label :first_name
-          = form.text_field :first_name
-        .form-group
-          = form.label :last_name
-          = form.text_field :last_name
-        .form-group
-          = form.label :handle
-          = form.text_field :handle
-          %small.form-text.text-muted The user name that will display to others.
-        .form-group
-          = form.label :email
-          = form.text_field :email, type: 'email'
-        .form-group
-          = form.label :password
-          = form.password_field :password
-        .form-action
-          = form.submit 'Sign Up', class: 'UserCard__button_solid'
+    %h1.UserCard__card-title= I18n.t('pages.users.new.title')
+    = form_for @user do |f|
+      .UserForm
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.first_name')
+          = f.text_field :first_name
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.last_name')
+          = f.text_field :last_name
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.handle')
+          = f.text_field :handle
+          %small.text-muted= I18n.t('pages.users.new.handle_hint')
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.email')
+          = f.text_field :email, type: 'email'
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.password')
+          = f.password_field :password
+        .UserForm__form-action
+          = f.submit I18n.t('pages.users.new.form_action')
   .UserCard__card-footer
     %p.text-muted
-      Already have an account?
-      =link_to t(".sign_in"), sign_in_path
+      = I18n.t('pages.users.new.already_have_account')
+      = link_to I18n.t('pages.users.new.sign_in'), sign_in_path

@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Clearance routes to constrains signed in users to the dashboard
-  constraints Clearance::Constraints::SignedIn.new do
-    root to: 'dashboard#show', as: :signed_in_root
-  end
-
-  # Clearance routes to constrain signed out users to the public pages
-  constraints Clearance::Constraints::SignedOut.new do
-    root to: 'public#index'
+  constraints Clearance::Constraints::SignedIn.new(&:admin?) do
+    scope 'admin' do
+      get '/', to: 'admin#index', as: 'admin'
+      mount Blazer::Engine, at: 'analytics'
+    end
   end
 
   # Clearance routes for users and passwords for password resets
@@ -29,8 +26,24 @@ Rails.application.routes.draw do
 
   delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
 
-  # Application route for dashboard
-  get 'dashboard', to: 'dashboard#show', as: :dashboard
+  resources :users, except: %i[index destroy] do
+    resources :locations
+    resources :events, except: %i[index show] do
+      post :favorite, to: 'favorite_events#create', on: :member
+      delete :unfavorite, to: 'favorite_events#destroy', on: :member
+    end
+    resources :favorite_events, path: :favorites, only: :index
+  end
 
-  root 'sessions#new'
+  get 'users/:id/settings', to: 'users#settings', as: 'user_settings'
+
+  get 'users/:id/organizer', to: 'users#organizer_prompt', as: 'organizer_prompt'
+
+  get 'users/:id/location', to: 'users#location_prompt', as: 'location_prompt'
+
+  get 'events', to: 'events#index', as: :events
+
+  get 'events/:id', to: 'events#show', as: :event
+
+  root 'events#index'
 end

@@ -3,13 +3,13 @@
   flex-flow: row wrap;
   justify-content: center;
 
-  @include margin($small-spacing);
+  @include margin($base-spacing auto $large-spacing auto);
 
   &__button_solid {
-    @include button-solid(map-get($theme_colors, primary), white);
+    @include button-solid($black, white);
   }
 
   &__button_outline {
-    @include button-outline(map-get($theme_colors, primary));
+    @include button-outline($black);
   }
 }

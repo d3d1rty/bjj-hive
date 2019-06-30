@@ -1,0 +1,15 @@
+.LocationsCard
+  .LocationsCard__card-body_rounded
+    %h1.LocationsCard__card-title= I18n.t('pages.locations.index.title')
+    .LocationsCard__button-wrapper
+      = button_to I18n.t('pages.locations.index.create_button'), new_user_location_path(@user), method: :get, class: 'LocationsCard__button_solid'
+    - @locations.each do |location|
+      .LocationsCard__card-item
+        .LocationIconPanel
+          = link_to edit_user_location_path(@user, location), class: 'LocationIconPanel__icon-link' do
+            %i{ class: 'fas fa-pencil-alt fa-2x LocationIconPanel__icon-link_edit', title: I18n.t('pages.locations.index.edit') }
+          = link_to user_location_path(@user, location), method: 'delete', class: 'LocationIconPanel__icon-link', data: { confirm: I18n.t('pages.locations.index.confirm') } do
+            %i{ class: 'fas fa-trash-alt fa-2x LocationIconPanel__icon-link_delete', title: I18n.t('pages.locations.index.delete') }
+        .LocationsCard__location-info
+          %p= location.name
+          = format_address(location)

@@ -1,18 +1,141 @@
 en:
+  app_name: "BJJ Hive"
   navigation:
     auth:
+      admin: "Admin"
+      favorite_events: "Favorites"
+      settings: "Settings"
       sign_out: "Sign Out"
     public:
+      events: "Events"
       sign_in: "Sign In"
       sign_up: "Sign Up"
   alerts:
   notices:
+    unauthorized: "You are not authorized to perform this action."
     user:
       create: "Your account was successfully created."
       update: "User information was successfully updated."
+    event:
+      create: "Event successfully posted."
+      update: "Event successfully updated."
+      destroy: "Event successfully deleted."
+    location:
+      create: "Location successfully added."
+      update: "Location successfully updated."
+      destroy: "Event successfully deleted."
+    favorite_event:
+      create: "Event saved to favorites."
+      delete-success: "Event removed from favorites."
+      delete-failure: "Something went wrong; we'll check it out."
   pages:
-    public:
+    admin:
+      index:
+        title: "Admin Panel"
+        analytics_link: "Analytics"
+    events:
+      index:
+        search_placeholder: "Search by location..."
+        search_button: "Search"
+        create_button: "Create an Event"
+        details_link: "View Details"
+        next_link: "Next"
+        prev_link: "Prev"
+      event_header:
+        no_cost_message: "No Cost"
+        favorite: "Favorite this event"
+        unfavorite: "Remove this event from favorites"
+        edit: "Edit this event"
+        delete: "Delete this event"
+        confirm: "Are you sure?"
+      form:
+        date_placeholder: "mm/dd/yyyy"
+        form_action: "Save"
+      new:
+        title: "Create Event"
+      edit:
+        title: "Edit Event"
+    locations:
+      index:
+        title: "Locations"
+        create_button: "Add a Location"
+        edit: "Edit this location"
+        delete: "Delete this location"
+        confirm: "Are you sure?"
+      form:
+        form_action: "Save"
+      new:
+        title: "Create Location"
+      edit:
+        title: "Edit Location"
+    sessions:
+      new:
+        title: "Sign In"
+        form_action: "Sign In"
+        no_account_yet: "No account yet?"
+        sign_up: "Sign Up"
+        forgot_password: "Forgot Password?"
+    users:
+      new:
+        title: "Sign Up"
+        handle_hint: "The user name that will display to others."
+        form_action: "Sign Up"
+        already_have_account: "Already have an account?"
+        sign_in: "Sign In"
+      edit:
+        title: "Edit Profile"
+        form_action: "Update"
+      location_prompt:
+        title: "Add First Location"
+        message: "Events listed in <span class=\"text-standout\">BJJ Hive</span> are tied to a physical location provided by the event organizer. This allows users to easily search for events by location. Go ahead and create your first location&mdash;you can create as many as necessary later&mdash;in order to get started."
+        registering_as: "You are registering as an event organizer."
+        need_to_change: "Need to change this?"
+      organizer_prompt:
+        title: "Are you an event organizer?"
+        yes_link: "Yes, I Am"
+        no_link: "No, I'm Not"
+      settings:
+        title: "Settings"
+        edit_profile: "Edit Profile"
+        manage_locations: "Manage Locations"
+        organizer_experience: "You are viewing the experience for an event organizer."
+        normal_experience: "You are viewing the experience for a normal user."
+        need_to_change: "Need to change this?"
   models:
+    event:
+      fields:
+        name: "name"
+        summary: "summary"
+        fee: "fee"
+        start_date: "start_date"
+        start_time: "start_time"
+        starts_at: "starts at"
+        end_date: "end_date"
+        end_time: "end_time"
+        ends_at: "ends at"
+        category: "category"
+        time_zone: "time zone"
+        location: "location"
+        user: "organizer"
+      validations:
+        unpermitted_category: "must be a value from the provided list of permitted event categories"
+        start_before_end: "must come before event end date/time"
+    location:
+      fields:
+        name: "name"
+        street_address: "street_address"
+        city: "city"
+        state: "state"
+        zip: "zip"
+        country: "country"
     user:
       fields:
-        first_name: "First Name"
+        first_name: "first_name"
+        last_name: "last_name"
+        handle: "handle"
+        email: "email"
+        password: "password"
+    session:
+      fields:
+        email: "email"
+        password: "password"

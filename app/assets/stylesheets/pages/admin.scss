@@ -1,0 +1,5 @@
+.AdminCard {
+  @include card-small;
+  @include card-plain;
+  @include margin($base-spacing auto null auto);
+}

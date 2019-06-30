@@ -1,0 +1,7 @@
+.EventsContainer
+  - @favorite_events.each do |favorite|
+    = render partial: 'events/event', locals: { event: favorite }
+  .EventPagination
+    = link_to_prev_page @favorite_events, I18n.t('pages.events.index.prev_link')
+    = link_to_next_page @favorite_events, I18n.t('pages.events.index.next_link')
+    %p= page_entries_info @favorite_events

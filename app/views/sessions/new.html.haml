@@ -1,18 +1,19 @@
 .SessionCard
   .SessionCard__card-body_rounded-top
-    = form_for :session, url: session_path do |form|
-      .form
-        .form-group
-          = form.label :email
-          = form.text_field :email
-        .form-group
-          = form.label :password
-          = form.password_field :password
-        .form-action
-          = form.submit 'Sign In', class: 'SessionCard__button_solid'
+    %h1.SessionCard__card-title= I18n.t('pages.sessions.new.title')
+    = form_for :session, url: session_path do |f|
+      .SessionForm
+        .SessionForm__form-group
+          = f.label I18n.t('models.session.fields.email')
+          = f.text_field :email
+        .SessionForm__form-group
+          = f.label I18n.t('models.session.fields.password')
+          = f.password_field :password
+        .SessionForm__form-action
+          = f.submit I18n.t('pages.sessions.new.form_action')
   .SessionCard__card-footer
     - if Clearance.configuration.allow_sign_up?
       %p.text-muted
-        No account yet?
-        = link_to t('.sign_up'), sign_up_path
-      %p= link_to t('.forgot_password'), new_password_path
+        = I18n.t('pages.sessions.new.no_account_yet')
+        = link_to I18n.t('pages.sessions.new.sign_up'), sign_up_path
+      %p= link_to I18n.t('pages.sessions.new.forgot_password'), new_password_path

@@ -11,10 +11,26 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading-font-family;
-  font-size: modular-scale(1);
   line-height: $heading-line-height;
   margin: 0 0 $mid-spacing;
+}
+
+h1 {
+  font-size: modular-scale(3);
+  font-family: $heading-bold-font-family;
+}
+
+h2,
+h3 {
+  font-size: modular-scale(2);
+  font-family: $heading-semibold-font-family;
+}
+
+h4,
+h5,
+h6 {
+  font-size: modular-scale(1);
+  font-family: $heading-regular-font-family;
 }
 
 p {
@@ -31,8 +47,8 @@ a {
   }
 
   &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-outline-offset;
+    outline: none;
+    outline-offset: none;
   }
 }
 
@@ -50,4 +66,9 @@ hr {
 
 .text-centered {
   text-align: center;
+}
+
+.text-standout {
+  font-family: $heading-semibold-font-family;
+  text-transform: uppercase;
 }

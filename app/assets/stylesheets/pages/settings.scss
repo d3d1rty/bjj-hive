@@ -1,0 +1,6 @@
+.SettingsCard {
+  @include card-small;
+  @include card-plain;
+  @include card-with-footer;
+  @include margin($base-spacing auto null auto);
+}

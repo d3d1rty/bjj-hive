@@ -14,8 +14,13 @@ tests:
     - apt-get update -qy
     - curl -sL https://deb.nodesource.com/setup_11.x | bash -
     - apt-get install -y nodejs
+    - curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+    - apt-get update && apt-get install yarn
     - gem install bundler -v 2.0.1
     - bundle install --without postgres production --jobs $(nproc) "${FLAGS[@]}"
+    - yarn install
     - cp config/gitlab-database.yml config/database.yml
     - RAILS_ENV=test bundle exec rails db:create db:schema:load
+    - RAILS_ENV=test bundle exec rails assets:precompile
     - bundle exec rspec

@@ -1,14 +1,16 @@
 .UserCard {
-  width: 97%;
-
+  @include card-large;
+  @include card-plain;
   @include card-with-footer;
   @include margin($base-spacing auto null auto);
+}
 
-  @media screen and (min-width: $M) {
-    width: 75%;
-  }
+.OrganizerCard {
+  @include card-small;
+  @include card-plain;
+  @include margin($base-spacing auto null auto);
+}
 
-  @media screen and (min-width: $L) {
-    width: 50%;
-  }
+.UserForm {
+  @include form;
 }

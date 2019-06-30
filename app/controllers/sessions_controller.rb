@@ -1,20 +1,24 @@
 # frozen_string_literal: true
 
 ##
-# Controller for sessions.
+# = SessionsController
+# Author::    Richard Davis
+#
+# This controller provides methods for user sessions.
 class SessionsController < Clearance::SessionsController
   ##
-  # GET /session/new
+  # GET /sign_in
   def new; end
 
   ##
-  # GET /sign_in
+  # POST /session
   def create
     @user = authenticate(params)
 
     sign_in(@user) do |status|
       if status.success?
-        redirect_to dashboard_path
+        ahoy.authenticate(@user)
+        redirect_to events_path
       else
         redirect_to sign_in_path, alert: [status.failure_message]
       end
@@ -24,25 +28,25 @@ class SessionsController < Clearance::SessionsController
   private
 
   ##
-  # Overrides default clearance behavior
+  # Override default clearance behavior.
   def redirect_signed_in_users
     redirect_to url_for_signed_in_users if signed_in?
   end
 
   ##
-  # Overrides default clearance behavior
+  # Override default clearance behavior.
   def url_after_create
-    dashboard_path
+    events_path
   end
 
   ##
-  # Overrides default clearance behavior
+  # Override default clearance behavior.
   def url_after_destroy
     sign_in_url
   end
 
   ##
-  # Overrides default clearance behavior
+  # Override default clearance behavior.
   def url_for_signed_in_users
     url_after_create
   end
