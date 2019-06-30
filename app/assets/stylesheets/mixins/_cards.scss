@@ -1,29 +1,135 @@
+@mixin card-large {
+  width: 97%;
+
+  @media screen and (min-width: $M) {
+    width: 75%;
+  }
+
+  @media screen and (min-width: $L) {
+    width: 65%;
+  }
+}
+
+@mixin card-small {
+  width: 97%;
+
+  @media screen and (min-width: $M) {
+    width: 75%;
+  }
+
+  @media screen and (min-width: $L) {
+    width: 50%;
+  }
+}
+
 @mixin card-common {
   word-wrap: break-word;
 
   @include padding(0);
+  @include margin($small-spacing auto);
+
+  &__card-title {
+    color: $black;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__info-box-group {
+    width: 97%;
+
+    @include margin(null auto);
+
+    @media screen and (min-width: $M) {
+      width: 75%;
+    }
+  }
+
+  &__info-box {
+    @include padding($tiny-spacing);
+    @include margin($base-spacing $tiny-spacing);
+    @include border-width(2px);
+    @include border-style(solid);
+    @include border-color($black);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+
+    p {
+      &:first-of-type {
+        font-family: $heading-semibold-font-family;
+        text-transform: uppercase;
+        text-align: center;
+        width: $super-spacing * 2;
+        background-color: white;
+
+        @include margin((-2 * $small-spacing) null null null);
+      }
+
+      &:last-of-type {
+        text-align: center;
+      }
+    }
+  }
+
+  &__item {
+    display: block;
+    font-family: $heading-semibold-font-family;
+    font-size: 125%;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    color: $black;
+
+    @include margin($tiny-spacing);
+    @include padding($base-spacing $small-spacing);
+    @include border-width(1px);
+    @include border-color($gray-40);
+    @include border-style(solid);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+
+    @media screen and (min-width: $M) {
+      @include margin($small-spacing);
+      @include padding($base-spacing);
+    }
+
+    @media screen and (min-width: $L) {
+      @include margin($base-spacing);
+      @include padding($large-spacing);
+    }
+
+    &:hover {
+      color: $gray-80;
+
+      @include border-color($gray-80);
+    }
+  }
+
+  &__button-group {
+    width: 100%;
+    justify-content: center;
+
+    @include button-group;
+  }
 
   &__button_solid {
-    @include button-solid(map-get($theme_colors, primary), white);
+    @include button-solid($black, white);
   }
 
   &__button_outline {
-    @include button-outline(map-get($theme_colors, primary));
+    @include button-outline($black);
   }
 }
 
 @mixin card-header {
-  background-color: $gray-10;
   font-size: 85%;
   line-height: 1.5;
-  text-align: center;
 
   @include margin(0);
-  @include padding(0.5em);
-  @include border-width(1px);
+  @include padding($small_spacing);
+  @include border-width(1px 1px 0);
   @include border-style(solid);
-  @include border-color($gray-40);
-  @include border-top-radius(5px);
+  @include border-color($gray-30);
+  @include border-top-radius($base-border-radius);
 
   p {
     @include margin(0);
@@ -48,43 +154,37 @@
     @include padding($base-spacing);
   }
 
-  h3 {
+  h2 {
     text-align: center;
-  }
-
-  a {
-    color: map-get($theme_colors, primary);
-
-    &:hover {
-      color: darken(map-get($theme_colors, primary), 10%);
-      text-decoration: none;
-    }
+    text-transform: uppercase;
+    color: $black;
   }
 }
 
 @mixin card-footer {
-  background-color: $gray-20;
+  background-color: white;
   font-size: 85%;
   line-height: 1.5;
   text-align: center;
 
   @include margin(0);
   @include padding($small-spacing);
-  @include border-width(1px);
+  @include border-width(0 1px 5px 1px);
   @include border-style(solid);
-  @include border-color($gray-40);
-  @include border-bottom-radius(5px);
+  @include border-color(null $gray-40 $black $gray-40);
+  @include border-bottom-radius($base-border-radius);
 
   p {
     @include margin(0);
   }
 
   a {
-    color: map-get($theme_colors, primary);
+    color: $black;
 
     &:hover {
-      color: darken(map-get($theme_colors, primary), 10%);
-      text-decoration: none;
+      color: $gray-80;
+
+      @include border-color($gray-80);
     }
   }
 }
@@ -94,11 +194,11 @@
 
   &__card-body_rounded {
     @include card-body;
-    @include border-width(1px);
+    @include border-width(1px 1px 5px 1px);
     @include border-style(solid);
-    @include border-color($gray-40);
-    @include border-top-radius(5px);
-    @include border-bottom-radius(5px);
+    @include border-color($gray-30 $gray-30 $black $gray-30);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
   }
 }
 
@@ -111,10 +211,10 @@
 
   &__card-body_rounded-bottom {
     @include card-body;
-    @include border-width(null 1px 1px 1px);
+    @include border-width(null 1px 5px 1px);
     @include border-style(null solid solid solid);
-    @include border-color(null $gray-40 $gray-40 $gray-40);
-    @include border-bottom-radius(5px);
+    @include border-color(null $gray-30 $black $gray-30);
+    @include border-bottom-radius($base-border-radius);
   }
 }
 
@@ -125,8 +225,8 @@
     @include card-body;
     @include border-width(1px 1px null 1px);
     @include border-style(solid solid null solid);
-    @include border-color($gray-40 $gray-40 null $gray-40);
-    @include border-top-radius(5px);
+    @include border-color($gray-30 $gray-30 null $gray-30);
+    @include border-top-radius($base-border-radius);
   }
 
   &__card-footer {
@@ -145,7 +245,7 @@
     @include card-body;
     @include border-width(null 1px null 1px);
     @include border-style(null solid null solid);
-    @include border-color(null $gray-40 null $gray-40);
+    @include border-color(null $gray-30 null $gray-30);
   }
 
   &__card-footer {

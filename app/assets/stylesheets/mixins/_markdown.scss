@@ -1,0 +1,70 @@
+@mixin markdown {
+  @include margin($large-spacing null);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: uppercase;
+    text-align: left;
+  }
+
+  ul {
+    @include margin(null $large-spacing $base-spacing $large-spacing);
+
+    li {
+      list-style-type: circle;
+    }
+  }
+
+  ol {
+    @include margin(null $large-spacing $base-spacing $large-spacing);
+
+    li {
+      list-style-type: upper-roman;
+    }
+  }
+
+  blockquote {
+    background-color: $gray-20;
+    text-align: center;
+    font-style: italic;
+    font-size: 110%;
+
+    @include margin($tiny-spacing auto);
+    @include padding($base-spacing);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+
+    @media screen and (min-width: $M) {
+      @include padding($mid-spacing);
+    }
+
+    @media screen and (min-width: $L) {
+      @include padding($small-spacing);
+    }
+
+    p {
+      @include margin(0);
+    }
+  }
+
+  code {
+    background-color: $gray-20;
+    display: inline-block;
+
+    @include padding($tiny-spacing $small-spacing);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+
+    @media screen and (min-width: $M) {
+      @include padding($mid-spacing);
+    }
+
+    @media screen and (min-width: $L) {
+      @include padding($small-spacing);
+    }
+  }
+}

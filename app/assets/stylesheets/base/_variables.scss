@@ -10,9 +10,38 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'poppinsbold';
+  src:
+    asset-url('poppins-bold-webfont.woff2') format('woff2'),
+    asset-url('poppins-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppinsregular';
+  src:
+    asset-url('poppins-regular-webfont.woff2') format('woff2'),
+    asset-url('poppins-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppinssemibold';
+  src:
+    asset-url('poppins-semibold-webfont.woff2') format('woff2'),
+    asset-url('poppins-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // Typography
 $base-font-family: 'open_sansregular';
-$heading-font-family: $base-font-family;
+$heading-bold-font-family: 'poppinsbold';
+$heading-semibold-font-family: 'poppinssemibold';
+$heading-regular-font-family: 'poppinsregular';
 
 // Line height
 $base-line-height: 1.5;
@@ -24,6 +53,7 @@ $base-spacing: 1.5em;
 $tiny-spacing: $base-spacing / 5;
 $small-spacing: $base-spacing / 3;
 $mid-spacing: $base-spacing / 2;
+$large-spacing: $base-spacing * 2;
 $super-spacing: $base-spacing * 3;
 $base-z-index: 0;
 
@@ -53,7 +83,7 @@ $base-font-color: $black;
 $action-color: map-get($theme-colors, primary);
 
 // Border
-$base-border-color: $gray-40;
+$base-border-color: $gray-30;
 $base-border: 1px solid $base-border-color;
 
 // Background Colors
@@ -74,3 +104,8 @@ $XL: 1200px;
 $L: 992px;
 $M: 768px;
 $S: 576px;
+
+// Forms
+$_form-background-color: #fff;
+$_form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$_form-box-shadow-focus: $_form-box-shadow, 0 0 5px rgba($action-color, 0.7);

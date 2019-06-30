@@ -6,6 +6,16 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
-    handle { Faker::Company.name }
+    handle { Faker::Internet.username.slice(0, 14) }
+    organizer { false }
+    admin { false }
+
+    trait :is_organizer do
+      organizer { true }
+    end
+
+    trait :is_admin do
+      admin { true }
+    end
   end
 end

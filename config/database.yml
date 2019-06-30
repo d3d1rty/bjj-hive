@@ -9,14 +9,14 @@ default: &default
 
 development:
   <<: *default
-  database: bjj-tracker_development
+  database: bjj-hive_development
 
 test:
   <<: *default
-  database: bjj-tracker_test
+  database: bjj-hive_test
 
 production:
   <<: *default
-  database: bjj-tracker_production
+  database: bjj-hive_production
   username: me
-  password: <%= ENV['BJJ-TRACKER_DATABASE_PASSWORD'] %>
+  password: <%= ENV['BJJ-HIVE_DATABASE_PASSWORD'] %>

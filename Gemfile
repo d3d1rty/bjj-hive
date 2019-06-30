@@ -35,15 +35,26 @@ gem 'webpacker'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-# Reduces boot times through caching; required in config/boot.rb
+# Use geocoder for interacting with LocationIQ
+gem 'geocoder', '~> 1.5', '>= 1.5.1'
+# Use kaminari for pagination
+gem 'kaminari', '~> 1.1', '>= 1.1.1'
+# Use redcarpet for markdown capability
+gem 'redcarpet', '~> 3.4'
+# Use rack-attack to throttle abusive requests
+gem 'rack-attack', '~> 6.0'
+# Use ahoy for analytics
+gem 'ahoy_matey', '~> 3.0'
+# Use blazer for analytics dashboard
+gem 'blazer', '~> 2.1'
+# Use friendly id_for event URLs
+gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a console
   gem 'pry-byebug', '~> 3.6'
   # Use RSpec for testing
   gem 'rspec-rails', '~> 3.8', '>= 3.8.2'
-  # Use for controller test
-  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
   # Use FactoryBot for test data
   gem 'factory_bot_rails', '~> 4.11', '>= 4.11.1'
 end

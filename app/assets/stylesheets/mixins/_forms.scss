@@ -1,6 +1,184 @@
+@mixin basic-form-field-styling {
+  appearance: none;
+  line-height: 7vh;
+  font-family: $base-font-family;
+  font-size: 1em;
+  background-color: $_form-background-color;
+  box-shadow: $_form-box-shadow;
+  transition: border-color $base-duration $base-timing;
+
+  @include border-width(1px);
+  @include border-style(solid);
+  @include border-color($gray-30);
+  @include border-top-radius($base-border-radius);
+  @include border-bottom-radius($base-border-radius);
+  @include padding($small-spacing);
+
+  @media screen and (min-width: $S) {
+    line-height: 5vh;
+  }
+
+  &:hover {
+    border-color: shade($base-border-color, 20%);
+  }
+
+  &:focus {
+    border-color: $action-color;
+    box-shadow: $_form-box-shadow-focus;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($_form-background-color, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $base-border;
+    }
+  }
+
+  &::placeholder {
+    color: tint($base-font-color, 40%);
+  }
+}
+
+@mixin form {
+  width: 100%;
+
+  @include margin(auto);
+
+  @media screen and (min-width: $M) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: $L) {
+    width: 80%;
+  }
+
+  &__form-group {
+    @include padding($tiny-spacing);
+    @include margin($base-spacing $tiny-spacing);
+    @include border-width(2px);
+    @include border-style(solid);
+    @include border-color($black);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+
+    label {
+      display: block;
+      font-family: $heading-semibold-font-family;
+      text-transform: uppercase;
+      text-align: center;
+      width: $super-spacing * 2;
+      background-color: white;
+
+      @include margin((-2 * $small-spacing) null null null);
+
+      &.field_with_errors {
+        color: shade(map-get($theme-colors, danger), 30%);
+      }
+    }
+
+    fieldset {
+      background-color: transparent;
+      border: 0;
+
+      @include margin(0);
+      @include padding(0);
+    }
+
+    legend {
+      font-weight: 600;
+
+      @include padding(0);
+    }
+
+    input,
+    textarea,
+    select {
+      display: block;
+      width: 95%;
+
+      @include basic-form-field-styling;
+      @include margin($mid-spacing auto);
+
+      @media screen and (min-width: $M) {
+        width: 70%;
+      }
+
+      &.field_with_errors {
+        color: shade(map-get($theme-colors, danger), 30%);
+        border: $base-border;
+        border-color: shade(map-get($theme-colors, danger), 30%);
+      }
+    }
+
+    [type="checkbox"],
+    [type="radio"],
+    [type="file"],
+    select {
+      &:focus {
+        outline: none;
+      }
+    }
+
+    textarea {
+      height: 30vh;
+    }
+
+    small {
+      display: block;
+      width: 95%;
+      text-align: right;
+
+      @include margin(0.5em null null null);
+
+      @media screen and (min-width: $M) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__time-field-group {
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+
+    @include margin($mid-spacing auto);
+
+    @media screen and (min-width: $M) {
+      width: 100%;
+    }
+
+    select {
+      flex: 100%;
+
+      @include margin($small-spacing auto);
+
+      @media screen and (min-width: $S) {
+        flex: 30%;
+
+        @include margin(auto $tiny-spacing);
+      }
+    }
+  }
+
+  &__form-action {
+    text-align: center;
+
+    @include margin(1em null null null);
+
+    input[type="submit"] {
+      @include button-solid($black, white);
+    }
+  }
+}
+
 @mixin form-inline {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 90%;
 
   @media screen and (min-width: $S) {
@@ -11,19 +189,31 @@
     width: 70%;
   }
 
-  input {
+  button {
+    flex: 1;
+
     @include margin($tiny-spacing null);
 
     @media screen and (min-width: $S) {
+      flex: 0;
+
       @include margin(null $tiny-spacing);
     }
   }
 
   input[type="text"] {
-    flex: 97%;
+    @include basic-form-field-styling;
+    @include border-width(1px 1px 5px 1px);
+    @include border-style(solid);
+    @include border-color($gray-20 $gray-20 $black $gray-20);
+    @include border-top-radius($base-border-radius);
+    @include border-bottom-radius($base-border-radius);
+    @include padding($small-spacing);
 
     @media screen and (min-width: $S) {
-      flex: 50%;
+      width: 50%;
+
+      @include margin($tiny-spacing);
     }
   }
 }

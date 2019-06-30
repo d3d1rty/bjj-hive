@@ -1,0 +1,16 @@
+.EventCard
+  = render partial: 'events/event_header', locals: { event: event }
+  .EventCard__card-body_rounded-bottom
+    %h2= event.name
+    .EventCard__info-box-group
+      .EventCard__info-box
+        %p= I18n.t('models.event.fields.location')
+        = format_address(event.location)
+      .EventCard__info-box
+        %p= I18n.t('models.event.fields.starts_at')
+        %p= "#{format_date(event.start_date)} at #{format_time(event.start_time, event.time_zone)}"
+      .EventCard__info-box
+        %p= I18n.t('models.event.fields.ends_at')
+        %p= "#{format_date(event.end_date)} at #{format_time(event.end_time, event.time_zone)}"
+    %p.EventCard__details-link
+      = link_to I18n.t('pages.events.index.details_link'), event_path(event)

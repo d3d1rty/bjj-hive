@@ -1,0 +1,20 @@
+.UserCard
+  .UserCard__card-body_rounded
+    %h1.UserCard__card-title= I18n.t('pages.users.edit.title')
+    = form_for @user do |f|
+      .UserForm
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.first_name')
+          = f.text_field :first_name
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.last_name')
+          = f.text_field :last_name
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.handle')
+          = f.text_field :handle
+          %small.form-text.text-muted The user name that will display to others.
+        .UserForm__form-group
+          = f.label I18n.t('models.user.fields.email')
+          = f.text_field :email, type: 'email'
+        .UserForm__form-action
+          = f.submit I18n.t('pages.users.edit.form_action')

@@ -11,14 +11,17 @@ RUN apt-get update && apt-get install yarn
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install
+RUN gem install bundler
 RUN yarn install
 
 COPY . ./
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
+
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
 
 EXPOSE 3000
 

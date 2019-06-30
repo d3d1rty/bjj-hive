@@ -1,0 +1,23 @@
+= form_for [@user, @location] do |f|
+  .LocationForm
+    = f.hidden_field :user_id
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.name')
+      = f.text_field :name
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.street_address')
+      = f.text_field :street_address
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.city')
+      = f.text_field :city
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.state')
+      = f.text_field :state
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.zip')
+      = f.text_field :zip
+    .LocationForm__form-group
+      = f.label I18n.t('models.location.fields.country')
+      = f.text_field :country
+    .LocationForm__form-action
+      = f.submit I18n.t('pages.locations.form.form_action')

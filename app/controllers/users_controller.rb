@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 ##
-# Controller for the user actions.
+# = UsersController
+# Author::    Richard Davis
+#
+# This controller provides methods for user sign up and settings.
 class UsersController < Clearance::UsersController
-  before_action :set_user, only: %i[show edit edit_profile update destroy]
-  before_action :protect_user_resources, only: %i[edit edit_profile update destroy]
+  before_action :set_user, only: %i[show edit settings location_prompt organizer_prompt update destroy]
+  before_action :protect_user_resources, only: %i[edit settings location_prompt organizer_prompt update destroy]
+  before_action :verify_organizer, only: :location_prompt
+  before_action :verify_registration_complete, except: %i[new create update location_prompt organizer_prompt]
 
   ##
   # GET /users/new
@@ -21,12 +26,18 @@ class UsersController < Clearance::UsersController
   def edit; end
 
   ##
-  # GET /users/:user_id/edit_profile
-  def edit_profile; end
+  # GET /users/:user_id/settings
+  def settings; end
 
   ##
-  # GET /users/:user_id/bio
-  def bio; end
+  # GET /users/:user_id/location
+  def location_prompt
+    @location = @user.locations.new
+  end
+
+  ##
+  # GET /users/:user_id/organizer
+  def organizer_prompt; end
 
   ##
   # POST /users
@@ -34,21 +45,26 @@ class UsersController < Clearance::UsersController
     @user = User.create(user_params)
 
     if @user.save
+      track('User Signup Success', first_name: @user.first_name, last_name: @user.last_name, handle: @user.handle, email: @user.email)
       sign_in @user
-      redirect_to url_after_create, notice: t('notices.user.create')
+      redirect_to url_after_create, notice: I18n.t('notices.user.create')
     else
-      redirect_to new_user_path, alert: @user.errors.full_messages
+      track('User Signup Failure', @user.errors.messages)
+      flash.now[:alert] = @user.errors.full_messages
+      render :new
     end
   end
 
   ##
   # PATCH/PUT /users/:user_id
-  #
-  # PATCH/PUT /users/:user_id.json
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: t('notices.user.update')
+      track('User Update Success', user_params)
+      return redirect_to location_prompt_path(@user) unless @user.created_first_location?
+
+      redirect_to user_settings_path(@user), notice: I18n.t('notices.user.update')
     else
+      track('User Update Failure', @user.errors.messages)
       redirect_to edit_user_path, alert: @user.errors.full_messages
     end
   end
@@ -56,46 +72,38 @@ class UsersController < Clearance::UsersController
   private
 
   ##
-  # Use callbacks to share common setup or constraints between actions.
+  # Set user for controller actions.
   def set_user
     @user = User.find(params[:id])
   end
 
   ##
-  # Protects against directory traversal
-  def protect_user_resources
-    head status: :unauthorized unless @user == current_user
-  end
-
-  ##
-  # Overrides default behavior from clearance
+  # Override default behavior from clearance.
   def user_from_params
     first_name = user_params.delete(:first_name)
     last_name = user_params.delete(:last_name)
-    business_name = user_params.delete(:business_name)
-    brand = user_params.delete(:brand)
+    handle = user_params.delete(:handle)
     email = user_params.delete(:email)
     password = user_params.delete(:password)
 
     Clearance.configuration.user_model.new(user_params).tap do |user|
       user.first_name = first_name
       user.last_name = last_name
-      user.business_name = business_name
-      user.brand = brand
+      user.handle = handle
       user.email = email
       user.password = password
     end
   end
 
   ##
-  # Overrides default behavior from clearance
+  # Override default behavior from clearance.
   def url_after_create
-    '/'
+    organizer_prompt_path(current_user)
   end
 
   ##
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Filter parameters.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :handle, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :handle, :email, :password, :organizer)
   end
 end

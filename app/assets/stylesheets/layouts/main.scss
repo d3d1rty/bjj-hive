@@ -1,2 +1,8 @@
 @import "nav";
 @import "header";
+
+.ContentWrapper {
+  max-width: 1200px;
+
+  @include margin(null auto);
+}
