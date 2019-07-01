@@ -19,10 +19,10 @@ describe Event, type: :model do
       ).to_not be_valid
     end
 
-    it 'prevent event start occurring after end date on same day' do
+    it 'allow event start and end date on same day' do
       expect(
-        build(:event, start_date: Time.now, end_date: Time.now, start_time: '11:00:00', end_time: '10:00:00', user: organizer, location: location)
-      ).to_not be_valid
+        build(:event, start_date: Time.now, end_date: Time.now, user: organizer, location: location)
+      ).to be_valid
     end
 
     it 'allow event start occurring before event end' do

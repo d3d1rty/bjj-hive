@@ -70,17 +70,17 @@ class Event < ApplicationRecord
     location&.city
   end
 
-  ##
-  # DateTime object representation of the event start time.
-  def starts_at
-    Time.new(start_date.year, start_date.month, start_date.day, start_time.hour, start_time.min, start_time.sec)
-  end
+  # ##
+  # # DateTime object representation of the event start time.
+  # def starts_at
+  #   Time.new(start_date.year, start_date.month, start_date.day, start_time.hour, start_time.min, start_time.sec)
+  # end
 
-  ##
-  # DateTime object representation of the event end time.
-  def ends_at
-    Time.new(end_date.year, end_date.month, end_date.day, end_time.hour, end_time.min, end_time.sec)
-  end
+  # ##
+  # # DateTime object representation of the event end time.
+  # def ends_at
+  #   Time.new(end_date.year, end_date.month, end_date.day, end_time.hour, end_time.min, end_time.sec)
+  # end
 
   ##
   # Validation for categories
@@ -91,12 +91,12 @@ class Event < ApplicationRecord
   ##
   # Validation for start/end date.
   def start_must_come_before_end
-    errors.add(:start_date, I18n.t('models.event.validations.start_before_end')) if date_field_present? && starts_at >= ends_at
+    errors.add(:start_date, I18n.t('models.event.validations.start_before_end')) if date_field_present? && start_date > end_date
   end
 
   ##
   # Checks if any of the date fields have been provided.
   def date_field_present?
-    start_date.present? || end_date.present? || start_time.present? || end_time.present?
+    start_date.present? || end_date.present?
   end
 end
