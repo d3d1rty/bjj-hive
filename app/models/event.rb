@@ -73,13 +73,13 @@ class Event < ApplicationRecord
   ##
   # DateTime object representation of the event start time.
   def starts_at
-    DateTime.new(start_date.year, start_date.month, start_date.day, start_time.hour, start_time.min, start_time.sec)
+    Time.new(start_date.year, start_date.month, start_date.day, start_time.hour, start_time.min, start_time.sec)
   end
 
   ##
   # DateTime object representation of the event end time.
   def ends_at
-    DateTime.new(end_date.year, end_date.month, end_date.day, end_time.hour, end_time.min, end_time.sec)
+    Time.new(end_date.year, end_date.month, end_date.day, end_time.hour, end_time.min, end_time.sec)
   end
 
   ##
