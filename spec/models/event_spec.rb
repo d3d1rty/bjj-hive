@@ -12,6 +12,7 @@ describe Event, type: :model do
     it { should validate_presence_of :summary }
     it { should validate_length_of :summary }
     it { should belong_to :user }
+    it { should have_many :comments }
 
     it 'prevent event start occurring after end date on different days' do
       expect(

@@ -15,6 +15,7 @@ class Event < ApplicationRecord
   belongs_to :location
   has_many :favorite_events
   has_many :favorited_by, through: :favorite_events, source: :user
+  has_many :comments
 
   reverse_geocoded_by 'locations.latitude', 'locations.longitude'
 

@@ -18,11 +18,11 @@ module ApplicationHelper
   end
 
   def markdown(content)
-    preprocessor = MarkdownPreprocessor.new(filter_html: true, no_images: false, no_styles: true, hard_wrap: false)
+    preprocessor = MarkdownPreprocessor.new(filter_html: true, no_images: false, no_styles: true, hard_wrap: true)
     @markdown ||= Redcarpet::Markdown.new(preprocessor, autolink: true,
                                                         footnotes: false,
                                                         space_after_headers: true,
-                                                        fenced_code_blocks: false,
+                                                        fenced_code_blocks: true,
                                                         underline: true,
                                                         highlight: true,
                                                         tables: true)

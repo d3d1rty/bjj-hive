@@ -28,10 +28,26 @@
   @include padding(0);
   @include margin($small-spacing auto);
 
+  a {
+    color: $black;
+
+    &:hover {
+      color: $gray-80;
+
+      @include border-color($gray-80);
+    }
+  }
+
   &__card-title {
     color: $black;
     text-transform: uppercase;
     text-align: center;
+
+    @include margin($mid-spacing 0 $tiny-spacing);
+
+    &__alt {
+      @include margin($mid-spacing 0 $base-spacing);
+    }
   }
 
   &__info-box-group {
@@ -145,6 +161,14 @@
   }
 }
 
+@mixin card-header-alt-border {
+  @include card-header;
+  border-radius: $base-border-radius $base-border-radius 0 0;
+  @include border-width(1px 1px 0 5px);
+  @include border-style(solid);
+  @include border-color($gray-30 $gray-30 $gray-30 $black);
+}
+
 @mixin card-body {
   background-color: white;
 
@@ -153,25 +177,18 @@
   @media screen and (min-width: $M) {
     @include padding($base-spacing);
   }
-
-  h2 {
-    text-align: center;
-    text-transform: uppercase;
-    color: $black;
-  }
 }
 
 @mixin card-footer {
   background-color: white;
   font-size: 85%;
   line-height: 1.5;
-  text-align: center;
 
   @include margin(0);
   @include padding($small-spacing);
   @include border-width(0 1px 5px 1px);
   @include border-style(solid);
-  @include border-color(null $gray-40 $black $gray-40);
+  @include border-color(null $gray-30 $black $gray-30);
   @include border-bottom-radius($base-border-radius);
 
   p {
@@ -187,6 +204,15 @@
       @include border-color($gray-80);
     }
   }
+}
+
+@mixin card-footer-alt-border {
+  @include card-footer;
+  border-radius: 0 0 $base-border-radius $base-border-radius;
+  text-align: right;
+  @include border-width(0 1px 1px 5px);
+  @include border-style(solid);
+  @include border-color(null $gray-30 $gray-30 $black);
 }
 
 @mixin card-plain {
@@ -250,5 +276,24 @@
 
   &__card-footer {
     @include card-footer;
+  }
+}
+
+@mixin alt-card-with-header-and-footer {
+  @include card-common;
+
+  &__card-header {
+    @include card-header-alt-border;
+  }
+
+  &__card-body_not-rounded {
+    @include card-body;
+    @include border-width(null 1px null 5px);
+    @include border-style(null solid null solid);
+    @include border-color(null $gray-30 null $black);
+  }
+
+  &__card-footer {
+    @include card-footer-alt-border;
   }
 }

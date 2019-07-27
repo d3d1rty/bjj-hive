@@ -37,4 +37,20 @@
       }
     }
   }
+
+  &_cookies-prompt {
+    background-color: tint(map-get($theme_colors, primary), 50%);
+
+    @include border-width(1px);
+    @include border-style(solid);
+    @include border-color(shade(map-get($theme_colors, primary), 40%));
+    @include border-top-radius($base_border_radius);
+    @include border-bottom-radius($base_border_radius);
+
+    p {
+      color: shade(map-get($theme_colors, primary), 40%);
+
+      @include margin(0);
+    }
+  }
 }

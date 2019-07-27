@@ -1,0 +1,43 @@
+.MarkdownHelpCard
+  .MarkdownHelpCard__card-body_rounded
+    %h2.MarkdownHelpCard__card-title= I18n.t('pages.markdown.headings_section')
+    .MarkdownHelpCard__body
+      %p= I18n.t('pages.markdown.headings_explanation')
+      %br
+      %h2= I18n.t('pages.markdown.heading_level_2')
+      = markdown(I18n.t('pages.markdown.heading_level_2_example'))
+      %h3= I18n.t('pages.markdown.heading_level_3')
+      = markdown(I18n.t('pages.markdown.heading_level_3_example'))
+      %h4= I18n.t('pages.markdown.heading_level_4')
+      = markdown(I18n.t('pages.markdown.heading_level_4_example'))
+      %h5= I18n.t('pages.markdown.heading_level_5')
+      = markdown(I18n.t('pages.markdown.heading_level_5_example'))
+    %hr
+    %h2.MarkdownHelpCard__card-title= I18n.t('pages.markdown.text_section')
+    .MarkdownHelpCard__body
+      %p= I18n.t('pages.markdown.text_explanation')
+      %br
+      %p= I18n.t('pages.markdown.italicized').html_safe
+      = markdown(I18n.t('pages.markdown.italicized_example'))
+      %br
+      %p= I18n.t('pages.markdown.bold').html_safe
+      = markdown(I18n.t('pages.markdown.bold_example'))
+      %br
+      %p= I18n.t('pages.markdown.underline').html_safe
+      = markdown(I18n.t('pages.markdown.underline_example'))
+      %br
+      %p= I18n.t('pages.markdown.link').html_safe
+      = markdown(I18n.t('pages.markdown.link_example'))
+    %hr
+    %h2.MarkdownHelpCard__card-title= I18n.t('pages.markdown.block_section')
+    .MarkdownHelpCard__body
+      %p= I18n.t('pages.markdown.block_explanation')
+      %br
+      %blockquote= I18n.t('pages.markdown.blockquote')
+      = markdown(I18n.t('pages.markdown.blockquote_example'))
+      %br
+      %p= I18n.t('pages.markdown.ulist').html_safe
+      = markdown(I18n.t('pages.markdown.ulist_example'))
+      %br
+      %p= I18n.t('pages.markdown.olist').html_safe
+      = markdown(I18n.t('pages.markdown.olist_example'))

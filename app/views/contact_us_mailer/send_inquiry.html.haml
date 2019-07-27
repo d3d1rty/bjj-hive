@@ -1,0 +1,12 @@
+%p
+  = "#{I18n.t('mail.contact_us.fields.name')}:"
+  = @details[:name]
+%p
+  = "#{I18n.t('mail.contact_us.fields.email')}:"
+  = @details[:email]
+%p
+  = "#{I18n.t('mail.contact_us.fields.reason')}:"
+  = @details[:reason]
+%p
+  = "#{I18n.t('mail.contact_us.fields.message')}:"
+  = @details[:message]

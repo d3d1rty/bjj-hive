@@ -8,7 +8,7 @@
       = link_to user_locations_path(@user), class: 'SettingsCard__item' do
         = I18n.t('pages.users.settings.manage_locations')
         %i{ class: 'fas fa-chevron-right', title: I18n.t('pages.users.settings.manage_locations') }
-  .SettingsCard__card-footer
+  .SettingsCard__card-footer.text-centered
     %p.text-muted
       - if @user.organizer?
         = I18n.t('pages.users.settings.organizer_experience')

@@ -78,7 +78,7 @@ describe EventsController, type: :request do
       it 'redirects the user and displays the unauthorized message' do
         get new_user_event_path(user, as: user)
         expect(response).to redirect_to root_path
-        expect(flash[:alert]).to eq([I18n.t('notices.unauthorized')])
+        expect(flash[:alert]).to eq([I18n.t('alerts.unauthorized')])
       end
     end
 
@@ -86,7 +86,7 @@ describe EventsController, type: :request do
       it 'redirects the user and displays the unauthorized message' do
         get edit_user_event_path(organizer, event, as: user)
         expect(response).to redirect_to root_path
-        expect(flash[:alert]).to eq([I18n.t('notices.unauthorized')])
+        expect(flash[:alert]).to eq([I18n.t('alerts.unauthorized')])
       end
     end
 
@@ -94,7 +94,7 @@ describe EventsController, type: :request do
       it 'redirects the user and displays the unauthorized message' do
         post user_events_path(organizer, event: attributes_for(:event, user_id: user.id), as: user)
         expect(response).to redirect_to root_path
-        expect(flash[:alert]).to eq([I18n.t('notices.unauthorized')])
+        expect(flash[:alert]).to eq([I18n.t('alerts.unauthorized')])
       end
     end
 
@@ -102,7 +102,7 @@ describe EventsController, type: :request do
       it 'redirects the user and displays the unauthorized message' do
         patch user_event_path(organizer, event, event: attributes_for(:event, name: 'Test Update', user_id: user.id), as: user)
         expect(response).to redirect_to root_path
-        expect(flash[:alert]).to eq([I18n.t('notices.unauthorized')])
+        expect(flash[:alert]).to eq([I18n.t('alerts.unauthorized')])
       end
     end
 
@@ -110,7 +110,7 @@ describe EventsController, type: :request do
       it 'redirects the user and displays the unauthorized message' do
         delete user_event_path(organizer, event, as: user)
         expect(response).to redirect_to root_path
-        expect(flash[:alert]).to eq([I18n.t('notices.unauthorized')])
+        expect(flash[:alert]).to eq([I18n.t('alerts.unauthorized')])
       end
     end
   end

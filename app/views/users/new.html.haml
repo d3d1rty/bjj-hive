@@ -19,9 +19,11 @@
         .UserForm__form-group
           = f.label I18n.t('models.user.fields.password')
           = f.password_field :password
+        .text-centered
+          %p= I18n.t('pages.users.new.accept_policies')
         .UserForm__form-action
           = f.submit I18n.t('pages.users.new.form_action')
-  .UserCard__card-footer
+  .UserCard__card-footer.text-centered
     %p.text-muted
       = I18n.t('pages.users.new.already_have_account')
       = link_to I18n.t('pages.users.new.sign_in'), sign_in_path

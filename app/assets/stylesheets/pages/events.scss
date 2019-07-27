@@ -12,7 +12,8 @@
 
 .EventCard {
   @include card-large;
-  @include card-with-header;
+  @include card-with-header
+  @include card-with-header-and-footer;
   @include card-plain;
   @include margin($base-spacing auto null auto);
 
