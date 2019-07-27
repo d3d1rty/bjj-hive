@@ -1,0 +1,32 @@
+.AboutCard {
+  @include card-large;
+  @include card-plain;
+}
+
+.PrivacyPolicyCard {
+  @include card-large;
+  @include card-plain;
+}
+
+.TermsOfServiceCard {
+  @include card-large;
+  @include card-plain;
+}
+
+.ContactUsCard {
+  @include card-large;
+  @include card-plain;
+}
+
+.ContactUsForm {
+  @include form;
+}
+
+.MarkdownHelpCard {
+  @include card-large;
+  @include card-plain;
+
+  &__body {
+    @include markdown;
+  }
+}

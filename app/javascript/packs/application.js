@@ -62,7 +62,25 @@ function favoriteStars () {
   })
 }
 
+function addReply (parent, information) {
+  let replyToHiddenField = document.getElementById('js-reply-to-hidden')
+  let replyToDisplayField = document.getElementById('js-reply-to-display')
+
+  replyToHiddenField.setAttribute('value', parent)
+  replyToDisplayField.setAttribute('value', information)
+
+  window.location.href = '#js-comment-reply-form'
+}
+
 document.addEventListener('turbolinks:load', () => {
   activateMenu()
   favoriteStars()
+
+  let replyToLinks = document.querySelectorAll('.js-reply-to-link')
+
+  replyToLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      addReply(e.target.dataset.parent, e.target.dataset.information)
+    })
+  })
 }, false)

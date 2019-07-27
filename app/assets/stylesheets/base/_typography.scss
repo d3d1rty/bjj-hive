@@ -12,18 +12,27 @@ h4,
 h5,
 h6 {
   line-height: $heading-line-height;
-  margin: 0 0 $mid-spacing;
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: modular-scale(3);
+  font-size: modular-scale(4);
   font-family: $heading-bold-font-family;
+  text-align: center;
+  margin: $base-spacing 0 $tiny-spacing;
 }
 
 h2,
 h3 {
+  display: inline-block;
   font-size: modular-scale(2);
   font-family: $heading-semibold-font-family;
+  text-align: left;
+  text-transform: uppercase;
+  color: $black;
+  margin: $base-spacing 0 $tiny-spacing;
+  padding-right: $tiny-spacing;
+  border-bottom: 3px solid $black;
 }
 
 h4,
@@ -31,9 +40,14 @@ h5,
 h6 {
   font-size: modular-scale(1);
   font-family: $heading-regular-font-family;
+  text-align: left;
+  text-transform: uppercase;
+  color: $black;
+  margin: $mid-spacing 0 $tiny-spacing;
 }
 
 p {
+  line-height: $base-line-height;
   margin: 0 0 $mid-spacing;
 }
 
@@ -52,12 +66,20 @@ a {
   }
 }
 
+ul {
+  list-style-type: circle;
+}
+
+ul, ol > li {
+  line-height: $base-line-height;
+}
+
 hr {
   border-bottom: $base-border;
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  margin: $small-spacing 0 $base-spacing 0;
+  margin: $base-spacing;
 }
 
 .text-muted {
@@ -66,6 +88,10 @@ hr {
 
 .text-centered {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 .text-standout {

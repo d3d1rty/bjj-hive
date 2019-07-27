@@ -4,7 +4,7 @@
     %p= I18n.t('pages.users.location_prompt.message').html_safe
     %hr
     = render 'locations/form'
-  .LocationCard__card-footer
+  .LocationCard__card-footer.text-centered
     %p.text-muted
       = I18n.t('pages.users.location_prompt.registering_as')
       = link_to I18n.t('pages.users.location_prompt.need_to_change'), organizer_prompt_path(@user)

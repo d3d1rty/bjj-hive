@@ -49,6 +49,8 @@ gem 'ahoy_matey', '~> 3.0'
 gem 'blazer', '~> 2.1'
 # Use friendly id_for event URLs
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
+# Use closure_tree for nested comments and replies
+gem 'closure_tree', '~> 7.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a console

@@ -28,8 +28,9 @@
     outline: none;
   }
 
-  &:disabled {
-    background-color: shade($_form-background-color, 5%);
+  &:disabled,
+  &[readonly] {
+    background-color: shade($_form-background-color, 2%);
     cursor: not-allowed;
 
     &:hover {
@@ -94,7 +95,6 @@
     }
 
     input,
-    textarea,
     select {
       display: block;
       width: 95%;
@@ -105,6 +105,20 @@
       @media screen and (min-width: $M) {
         width: 70%;
       }
+
+      &.field_with_errors {
+        color: shade(map-get($theme-colors, danger), 30%);
+        border: $base-border;
+        border-color: shade(map-get($theme-colors, danger), 30%);
+      }
+    }
+
+    textarea {
+      display: block;
+      width: 95%;
+
+      @include basic-form-field-styling;
+      @include margin($mid-spacing auto);
 
       &.field_with_errors {
         color: shade(map-get($theme-colors, danger), 30%);
@@ -135,6 +149,16 @@
 
       @media screen and (min-width: $M) {
         width: 100%;
+      }
+
+      a {
+        color: $black;
+
+        &:hover {
+          color: $gray-80;
+
+          @include border-color($gray-80);
+        }
       }
     }
   }

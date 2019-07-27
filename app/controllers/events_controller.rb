@@ -25,7 +25,9 @@ class EventsController < ApplicationController
 
   ##
   # GET /events/:event_slug
-  def show; end
+  def show
+    @comments = @event.comments.all
+  end
 
   ##
   # GET /users/:user_id/events/new

@@ -9,6 +9,14 @@ class ApplicationController < ActionController::Base
   include Clearance::Controller
   include HiveTime
 
+  ##
+  # POST /accept_cookies
+  def accept_cookies
+    session[:accepted_cookies] = true
+    flash.discard
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   ##
@@ -35,7 +43,7 @@ class ApplicationController < ActionController::Base
     return if current_user.id == params[:user_id].to_i || current_user.id == params[:id].to_i
 
     track('Unauthorized Access Attempt', user_id: current_user.id, url: request.fullpath)
-    redirect_back fallback_location: root_path, alert: [I18n.t('notices.unauthorized')]
+    redirect_back fallback_location: root_path, alert: [I18n.t('alerts.unauthorized')]
   end
 
   ##
@@ -48,9 +56,9 @@ class ApplicationController < ActionController::Base
 
   ## Verifies user is an organizer.
   def verify_organizer
-    return if current_user.organizer?
+    return if current_user.organizer? || current_user.admin?
 
     track('Unauthorized Access Attempt', user_id: current_user.id, url: request.fullpath)
-    redirect_back fallback_location: root_path, alert: [I18n.t('notices.unauthorized')]
+    redirect_back fallback_location: root_path, alert: [I18n.t('alerts.unauthorized')]
   end
 end

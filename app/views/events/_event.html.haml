@@ -1,7 +1,7 @@
 .EventCard
   = render partial: 'events/event_header', locals: { event: event }
   .EventCard__card-body_rounded-bottom
-    %h2= event.name
+    %h1.EventCard__card-title__alt= event.name
     .EventCard__info-box-group
       .EventCard__info-box
         %p= I18n.t('models.event.fields.location')

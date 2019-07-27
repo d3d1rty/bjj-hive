@@ -11,5 +11,11 @@ describe User, type: :model do
     it { should validate_presence_of :email }
     it { should validate_presence_of :handle }
     it { should validate_length_of :handle }
+    it { should have_many :events }
+    it { should have_many :locations }
+    it { should have_many :favorites }
+    it { should have_many :favorite_events }
+    it { should have_many :posts }
+    it { should have_many :replies }
   end
 end

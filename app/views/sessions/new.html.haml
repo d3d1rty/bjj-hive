@@ -11,7 +11,7 @@
           = f.password_field :password
         .SessionForm__form-action
           = f.submit I18n.t('pages.sessions.new.form_action')
-  .SessionCard__card-footer
+  .SessionCard__card-footer.text-centered
     - if Clearance.configuration.allow_sign_up?
       %p.text-muted
         = I18n.t('pages.sessions.new.no_account_yet')

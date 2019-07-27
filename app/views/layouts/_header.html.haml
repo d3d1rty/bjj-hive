@@ -1,3 +1,8 @@
+- if !signed_in? && session[:accepted_cookies].nil?
+  .MushakaHeader.MushakaHeader_cookies-prompt
+    %p
+      = I18n.t('header.cookies_prompt').html_safe
+      = link_to I18n.t('header.accept_cookies'), accept_cookies_path, method: 'post'
 - if flash[:alert]
   .MushakaHeader.MushakaHeader_alert
     %ul
