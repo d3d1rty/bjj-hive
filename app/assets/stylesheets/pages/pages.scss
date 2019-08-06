@@ -1,3 +1,73 @@
+.PractitionerHero {
+  @include hero-regular;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  &__headline {
+    flex: 100%;
+  }
+
+  &__form_inline {
+    @include form-inline;
+
+    flex: 100%;
+
+    input[type="text"] {
+      @media screen and (min-width: $S) {
+        width: 50%;
+      }
+
+      @media screen and (min-width: $M) {
+        width: 40%;
+      }
+
+      @media screen and (min-width: $L) {
+        width: 30%;
+      }
+    }
+  }
+}
+
+.OrganizerHero {
+  @include hero-inverted;
+}
+
+.CallToActionHero {
+  @include hero-regular;
+}
+
+.FeatureCardDeck {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: $super-spacing;
+}
+
+.FeatureCard {
+  @include card-plain;
+  width: 97%;
+
+  @media screen and (min-width: $S) {
+    width: 66%;
+  }
+
+  @media screen and (min-width: $M) {
+    width: 55%;
+  }
+
+  @media screen and (min-width: $L) {
+    width: 33%;
+  }
+
+  &__card-body_rounded {
+    @media screen and (min-width: $L) {
+      height: 325px;
+    }
+  }
+}
+
 .AboutCard {
   @include card-large;
   @include card-plain;

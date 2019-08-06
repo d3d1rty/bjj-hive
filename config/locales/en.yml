@@ -47,6 +47,42 @@ en:
     contact_us:
       success: "Your inquiry has been sent. We will review and respond as soon as we can. Thanks!"
   pages:
+    landing_page:
+      practitioner_hero_headline: "Find the events you're looking for"
+      organizer_hero_headline: "Tell the world about your events"
+      organizer_hero_cta: "Become an Organizer"
+      feature_cards:
+        - card_title: "Connect"
+          card_body:
+            "
+            <ul>
+              <li>Find local classes, conferences, seminars, and tournaments.</li>
+              <li>Start a conversation directly with the organizers.</li>
+              <li>Discuss events with other attendees and participants.</li>
+            </ul>
+            "
+        - card_title: "Grow"
+          card_body:
+            "
+            <ul>
+              <li>Become a better BJJ practitioner as you connect with others.</li>
+              <li>Be more actively involved in the BJJ community.</li>
+              <li>Stay informed of the latest events happening near you.</li>
+            </ul>
+            "
+        - card_title: "Opt-Out"
+          card_body:
+            "
+            <ul>
+              <li>Get the info you need without depending on Big Tech.</li>
+              <li>Join the rising tide of alternative platforms.</li>
+              <li>Build the foundations of the new BJJ-focused online community.</li>
+            </ul>
+            "
+      cta_hero_headline: "30 seconds to sign up"
+      cta_hero_lede: "Let us connect you with the people that will help you achieve what you were meant to."
+      cta_hero_cta: "Sign Up"
+
     about:
       title: "About BJJ Hive"
       body:

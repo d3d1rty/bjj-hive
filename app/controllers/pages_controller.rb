@@ -4,6 +4,12 @@
 #  blah
 class PagesController < ApplicationController
   ##
+  # GET /
+  def landing_page
+    render layout: 'alternate'
+  end
+
+  ##
   # GET /about
   def about; end
 
