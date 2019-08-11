@@ -1,3 +1,5 @@
+= title I18n.t('pages.favorite_events.index.title')
+
 .EventsContainer
   - @favorite_events.each do |favorite|
     = render partial: 'events/event', locals: { event: favorite }

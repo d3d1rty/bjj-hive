@@ -1,3 +1,6 @@
+= title I18n.t('pages.events.index.title')
+= description I18n.t('pages.events.index.description')
+
 .EventsRibbon
   = form_tag events_path, method: 'get', class: 'EventsRibbon__form_inline' do
     = text_field_tag :search, params[:search], placeholder: I18n.t('pages.events.index.search_placeholder')

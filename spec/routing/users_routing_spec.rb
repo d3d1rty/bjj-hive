@@ -5,7 +5,7 @@ require 'rails_helper'
 describe UsersController, type: :routing do
   describe 'routing' do
     it 'routes to #new' do
-      expect(get: '/sign_up').to route_to('users#new')
+      expect(get: '/sign-up').to route_to('users#new')
     end
 
     it 'routes to #edit' do
