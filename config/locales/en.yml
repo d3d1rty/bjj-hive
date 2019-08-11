@@ -1,5 +1,6 @@
 en:
   app_name: "BJJ Hive"
+  app_title: "%{page_title} | BJJ Hive"
   navigation:
     auth:
       admin: "Admin"
@@ -11,7 +12,7 @@ en:
       sign_in: "Sign In"
       sign_up: "Sign Up"
   header:
-    cookies_prompt: "This site uses cookies for limited purposes. Review our <a href=\"/privacy_policy#cookies\">privacy policy</a> to learn more about how we use them."
+    cookies_prompt: "This site uses cookies for limited purposes. Review our <a href=\"/privacy-policy#cookies\">privacy policy</a> to learn more about how we use them."
     accept_cookies: "Accept Cookies"
   footer:
     links:
@@ -19,6 +20,7 @@ en:
       privacy_policy: "Privacy Policy"
       terms_of_service: "Terms of Service"
       contact_us: "Contact Us"
+      sitemap: "Sitemap"
     copyright: "&copy; Copyright <span class=\"text-standout\">BJJ Hive LLC</span>"
   alerts:
     unauthorized: "You are not authorized to perform this action."
@@ -48,6 +50,9 @@ en:
       success: "Your inquiry has been sent. We will review and respond as soon as we can. Thanks!"
   pages:
     landing_page:
+      title: "The Premier BJJ Events Platform"
+      description: "BJJ Hive is a platform that connects BJJ practitioners and event organizers. Let us connect you with the people that will help you achieve what you were meant to."
+      last_updated: "2019-08-01"
       practitioner_hero_headline: "Find the events you're looking for"
       organizer_hero_headline: "Tell the world about your events"
       organizer_hero_cta: "Become an Organizer"
@@ -85,6 +90,8 @@ en:
 
     about:
       title: "About BJJ Hive"
+      description: "Find out more about BJJ Hive, including our mission, values, and history."
+      last_updated: "2019-07-26"
       body:
         "
         <h3>Our Mission</h3>
@@ -101,6 +108,8 @@ en:
         "
     privacy_policy:
       title: "Privacy Policy"
+      description: "BJJ Hive's privacy policy outlines the circumstances in which we collect your data and how we use the data collected."
+      last_updated: "2019-07-26"
       body:
         "
         <p><em>Effective date: 07/26/2019</em></p>
@@ -138,7 +147,7 @@ en:
 				<h5>Location Data</h5>
         <p>We may use and store information about your location if you give us permission to do so (“<strong>Location Data</strong>”). We use this data to provide features of our Service, to improve and customise our Service.</p>
 				<p>You can enable or disable location services when you use our Service at any time by way of your device settings.</p>
-				<h5>Tracking Cookies Data</h5>
+				<h5 id=\"cookies\">Tracking Cookies Data</h5>
 				<p>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information.</p>
 				<p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyze our Service.</p>
 				<p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
@@ -237,10 +246,12 @@ en:
 				<h2>18. Contact Us</h2>
 				<p>If you have any questions about this Privacy Policy, please contact us:</p>
 				<p>By email: support@bjjhive.com.</p>
-				<p>By visiting this page on our website: https://bjjhive.com/contact_us.</p>
+				<p>By visiting this page on our website: https://bjjhive.com/contact-us.</p>
         "
     terms_of_service:
       title: "Terms of Service"
+      description: "The Terms of Service specify the terms and conditions for using and posting content on the BJJ Hive platform."
+      last_updated: "2019-07-26"
       body:
         "
           <p><em>Last updated: 07/26/2019</em></p>
@@ -359,10 +370,12 @@ en:
           <h2>25. Contact Us</h2>
           <p>Please send your feedback, comments, requests for technical support:</p>
           <p>By email: support@bjjhive.com.</p>
-          <p>By visiting this page on our website: https://bjjhive.com/contact_us.</p>
+          <p>By visiting this page on our website: https://bjjhive.com/contact-us.</p>
         "
     contact_us:
       title: "Contact Us"
+      description: "The contact form allows you to easily get in touch with the site operators for BJJ Hive."
+      last_updated: "2019-07-26"
       valid_reasons:
         - "Support Request"
         - "Bug Report"
@@ -372,6 +385,9 @@ en:
         - "Other"
       form_action: "Submit"
     markdown:
+      title: "Markdown Help"
+      description: "You can easily use markdown syntax to add formatting to your events and posts on BJJ Hive. This page demonstrates the basics of markdown."
+      last_updated: "2019-07-26"
       headings_section: "Headings"
       headings_explanation: "You can include headings and subheadings using markdown. This allows you to better organize the structure of your postings. There are multiple heading levels, as shown below."
       heading_level_2: "Heading Level 2"
@@ -455,6 +471,8 @@ en:
         analytics_link: "Analytics"
     events:
       index:
+        title: "Events Listing"
+        description: "Find the BJJ events that you are looking for. Classes, conferences, seminars, and tournament--you can find them all here."
         search_placeholder: "Search by location..."
         search_button: "Search"
         create_button: "Create an Event"
@@ -462,6 +480,7 @@ en:
         next_link: "Next"
         prev_link: "Prev"
       show:
+        description: "See this event--and others like it--on BJJ Hive now. Get the information you need and engage with the event organizer."
         leave-comment: "Leave a Comment"
       event_header:
         no_cost_message: "No Cost"
@@ -478,6 +497,9 @@ en:
         title: "Create Event"
       edit:
         title: "Edit Event"
+    favorite_events:
+      index:
+        title: "My Favorite Events"
     comments:
       form:
         form_action: "Comment"
@@ -499,6 +521,7 @@ en:
     sessions:
       new:
         title: "Sign In"
+        description: "Engage with the BJJ Hive community and find the events that you are lookin for. Sign into your BJJ Hive account now."
         form_action: "Sign In"
         no_account_yet: "No account yet?"
         sign_up: "Sign Up"
@@ -506,6 +529,7 @@ en:
     users:
       new:
         title: "Sign Up"
+        description: "Engage with the BJJ Hive community and find the events that you are looking for. Sign up for a BJJ Hive account now."
         handle_hint: "The user name that will display to others."
         accept_policies: "By submitting this form, I affirm that I have read and accept the terms and conditions for using this site as well as the privacy policy (including information about how this site uses cookies.)"
         form_action: "Sign Up"
@@ -530,6 +554,12 @@ en:
         organizer_experience: "You are viewing the experience for an event organizer."
         normal_experience: "You are viewing the experience for a normal user."
         need_to_change: "Need to change this?"
+    passwords:
+      new:
+        title: "Reset Password"
+        description: "Forgot the password to your BJJ Hive account? Reset it with this form."
+      create:
+        title: "Password Reset Sent!"
   models:
     event:
       fields:

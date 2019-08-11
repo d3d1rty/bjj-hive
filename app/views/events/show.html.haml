@@ -1,3 +1,6 @@
+= title @event.name
+= description I18n.t('pages.events.show.description')
+
 .EventCard
   = render partial: 'events/event_header', locals: { event: @event }
   .EventCard__card-body_not-rounded

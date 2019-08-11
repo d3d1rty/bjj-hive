@@ -31,11 +31,11 @@ Rails.application.routes.draw do
 
   resource :session, controller: 'sessions', only: %i[create new]
 
-  get '/sign_in', to: 'sessions#new'
+  get '/sign-in', to: 'sessions#new'
 
-  get '/sign_up', to: 'users#new'
+  get '/sign-up', to: 'users#new'
 
-  delete '/sign_out', to: 'sessions#destroy', as: 'sign_out'
+  delete '/sign-out', to: 'sessions#destroy', as: 'sign_out'
 
   get '/users/:id/settings', to: 'users#settings', as: 'user_settings'
 
@@ -43,21 +43,23 @@ Rails.application.routes.draw do
 
   get '/users/:id/location', to: 'users#location_prompt', as: 'location_prompt'
 
-  post '/accept_cookies', to: 'application#accept_cookies', as: 'accept_cookies'
+  post '/accept-cookies', to: 'application#accept_cookies', as: 'accept_cookies'
 
   get '/about', to: 'pages#about', as: 'about'
 
-  get '/privacy_policy', to: 'pages#privacy_policy', as: 'privacy_policy'
+  get '/privacy-policy', to: 'pages#privacy_policy', as: 'privacy_policy'
 
-  get '/terms_of_service', to: 'pages#terms_of_service', as: 'terms_of_service'
+  get '/terms-of-service', to: 'pages#terms_of_service', as: 'terms_of_service'
 
-  get '/contact_us', to: 'pages#contact_us', as: 'contact_us'
+  get '/contact-us', to: 'pages#contact_us', as: 'contact_us'
 
   post '/contact', to: 'pages#contact', as: 'contact'
 
   scope 'help' do
     get '/markdown', to: 'pages#markdown', as: 'markdown'
   end
+
+  get '/sitemap.xml', to: 'pages#sitemap', as: 'sitemap', defaults: { format: 'xml' }
 
   get '/', to: 'pages#landing_page'
 
