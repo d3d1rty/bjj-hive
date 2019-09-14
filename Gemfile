@@ -17,12 +17,6 @@ gem 'haml-rails', '~> 1.0'
 gem 'sassc-rails', '~> 2.1'
 # Use Font Awesome for iconography
 gem 'font-awesome-sass', '~> 5.8.1'
-# Use normalize for CSS resets
-gem 'rails-assets-normalize-css', source: 'https://rails-assets.org'
-# Use Bourbon for CSS
-gem 'bourbon', '~> 5.1'
-# Use Neat for CSS Grid
-gem 'neat', '~> 3.0', '>= 3.0.1'
 # Use autoprefixer to handle vendor prefixes
 gem 'autoprefixer-rails', '~> 9.4', '>= 9.4.7'
 # Use Uglifier as compressor for JavaScript assets

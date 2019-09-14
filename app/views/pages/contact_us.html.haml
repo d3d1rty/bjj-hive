@@ -1,22 +1,20 @@
 = title I18n.t('pages.contact_us.title')
 = description I18n.t('pages.contact_us.description')
-
-.ContactUsCard
-  .ContactUsCard__card-body_rounded
-    %h1.ContactUsCard__card-title= I18n.t('pages.contact_us.title')
-    = form_tag contact_path, method: 'post' do
-      .ContactUsForm
-        .ContactUsForm__form-group
-          = label_tag I18n.t('mail.contact_us.fields.name')
-          = text_field_tag :name
-        .ContactUsForm__form-group
-          = label_tag I18n.t('mail.contact_us.fields.email')
-          = email_field_tag :email
-        .ContactUsForm__form-group
-          = label_tag I18n.t('mail.contact_us.fields.reason')
-          = select_tag :reason, options_for_select(I18n.t('pages.contact_us.valid_reasons'))
-        .ContactUsForm__form-group
-          = label_tag I18n.t('mail.contact_us.fields.message')
-          = text_area_tag :message
-        .ContactUsForm__form-action
-          = submit_tag I18n.t('pages.contact_us.form_action')
+= card modifier: 'bottomBorder' do
+  = card_body do
+    = card_title I18n.t('pages.contact_us.title')
+    = form_tag contact_path, method: 'post', class: 'Form' do
+      = form_group do
+        = label_tag I18n.t('mail.contact_us.fields.name')
+        = text_field_tag :name
+      = form_group do
+        = label_tag I18n.t('mail.contact_us.fields.email')
+        = email_field_tag :email
+      = form_group do
+        = label_tag I18n.t('mail.contact_us.fields.reason')
+        = select_tag :reason, options_for_select(I18n.t('pages.contact_us.valid_reasons'))
+      = form_group do
+        = label_tag I18n.t('mail.contact_us.fields.message')
+        = text_area_tag :message
+      = form_action do
+        = submit_tag I18n.t('pages.contact_us.form_action'), class: 'Button--solid-primary'

@@ -1,16 +1,21 @@
-.EventCard
+= card modifier: 'bottomBorder' do
   = render partial: 'events/event_header', locals: { event: event }
-  .EventCard__card-body_rounded-bottom
-    %h1.EventCard__card-title__alt= event.name
-    .EventCard__info-box-group
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.location')
-        = format_address(event.location)
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.starts_at')
-        %p= "#{format_date(event.start_date)} at #{format_time(event.start_time, event.time_zone)}"
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.ends_at')
-        %p= "#{format_date(event.end_date)} at #{format_time(event.end_time, event.time_zone)}"
-    %p.EventCard__details-link
-      = link_to I18n.t('pages.events.index.details_link'), event_path(event)
+  = card_body do
+    = card_title event.name, modifier: 'spaced'
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.location')
+        = info_box_content do
+          = format_address(event.location)
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.starts_at')
+        = info_box_content do
+          #{format_date(event.start_date)} at #{format_time(event.start_time, event.time_zone)}
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.ends_at')
+        = info_box_content do
+          #{format_date(event.end_date)} at #{format_time(event.end_time, event.time_zone)}
+    %p.u-Text--center
+      = link_to I18n.t('pages.events.index.details_link'), event_path(event), class: 'Button--solid-dark'

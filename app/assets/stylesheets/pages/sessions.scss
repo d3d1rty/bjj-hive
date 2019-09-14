@@ -1,9 +1,0 @@
-.SessionCard {
-  @include card-small;
-  @include card-with-footer;
-  @include margin($base-spacing auto null auto);
-}
-
-.SessionForm {
-  @include form;
-}

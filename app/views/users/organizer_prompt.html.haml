@@ -1,7 +1,6 @@
 = title I18n.t('pages.users.organizer_prompt.title')
-
-.OrganizerCard
-  .OrganizerCard__card-body_rounded
-    %h1.OrganizerCard__card-title= I18n.t('pages.users.organizer_prompt.title')
-    = link_to I18n.t('pages.users.organizer_prompt.yes_link'), user_path(@user, user: { organizer: true }), class: 'OrganizerCard__item', method: :patch
-    = link_to I18n.t('pages.users.organizer_prompt.no_link'), user_path(@user, user: { organizer: false }), class: 'OrganizerCard__item', method: :patch
+= card classes: 'Card--medium' do
+  = card_body do
+    = card_title I18n.t('pages.users.organizer_prompt.title')
+    = link_to I18n.t('pages.users.organizer_prompt.yes_link'), user_path(@user, user: { organizer: true }), class: 'BoxLink--dark', method: :patch
+    = link_to I18n.t('pages.users.organizer_prompt.no_link'), user_path(@user, user: { organizer: false }), class: 'BoxLink--dark', method: :patch

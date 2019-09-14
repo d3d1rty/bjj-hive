@@ -1,19 +1,18 @@
 = title I18n.t('pages.users.settings.title')
-
-.SettingsCard
-  .SettingsCard__card-body_rounded-top
-    %h1.SettingsCard__card-title= I18n.t('pages.users.settings.title')
-    = link_to edit_user_path(@user), class: 'SettingsCard__item' do
+= card modifier: 'bottomBorder', classes: 'Card--medium' do
+  = card_body do
+    = card_title I18n.t('pages.users.settings.title')
+    = link_to edit_user_path(@user), class: 'BoxLink--dark' do
       = I18n.t('pages.users.settings.edit_profile')
       %i{ class: 'fas fa-chevron-right', title: I18n.t('pages.users.settings.edit_profile') }
     - if @user.organizer?
-      = link_to user_locations_path(@user), class: 'SettingsCard__item' do
+      = link_to user_locations_path(@user), class: 'BoxLink--dark' do
         = I18n.t('pages.users.settings.manage_locations')
         %i{ class: 'fas fa-chevron-right', title: I18n.t('pages.users.settings.manage_locations') }
-  .SettingsCard__card-footer.text-centered
-    %p.text-muted
+  = card_footer do
+    %p.u-Text--muted.u-Text--center
       - if @user.organizer?
         = I18n.t('pages.users.settings.organizer_experience')
       - else
         = I18n.t('pages.users.settings.normal_experience')
-      = link_to I18n.t('pages.users.settings.need_to_change'), organizer_prompt_path(@user)
+      = link_to I18n.t('pages.users.settings.need_to_change'), organizer_prompt_path(@user), class: 'Link--primary'

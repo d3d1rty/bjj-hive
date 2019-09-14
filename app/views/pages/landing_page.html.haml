@@ -1,22 +1,22 @@
 = title I18n.t('pages.landing_page.title')
 = description I18n.t('pages.landing_page.description')
-
-.PractitionerHero
-  %h1.PractitionerHero__headline= I18n.t('pages.landing_page.practitioner_hero_headline')
-  = form_tag events_path, method: 'get', class: 'PractitionerHero__form_inline' do
+= hero do
+  = hero_headline I18n.t('pages.landing_page.practitioner_hero_headline')
+  = form_tag events_path, method: 'get', class: 'EventSearchForm' do
     = text_field_tag :search, params[:search], placeholder: I18n.t('pages.events.index.search_placeholder')
-    = button_tag I18n.t('pages.events.index.search_button'), class: 'PractitionerHero__button-solid'
-.OrganizerHero
-  %h1.OrganizerHero__headline= I18n.t('pages.landing_page.organizer_hero_headline')
-  = link_to I18n.t('pages.landing_page.organizer_hero_cta'), sign_up_path, class: 'OrganizerHero__button-outline'
-.FeatureCardDeck
+    = button_tag I18n.t('pages.events.index.search_button'), class: 'Button--solid-dark'
+= hero modifier: 'inverted' do
+  = hero_headline I18n.t('pages.landing_page.organizer_hero_headline')
+  = link_to I18n.t('pages.landing_page.organizer_hero_cta'), sign_up_path, class: 'Button--outline-light'
+= card_deck do
   - I18n.t('pages.landing_page.feature_cards').each do |feature|
-    .FeatureCard
-      .FeatureCard__card-body_rounded
-        %h1.FeatureCard__card-title= feature[:card_title]
+    = card modifier: 'small', classes: 'FeatureCard' do
+      = card_body do
+        = card_title feature[:card_title]
         = feature[:card_body].html_safe
-.CallToActionHero
-  %h1.CallToActionHero__headline= I18n.t('pages.landing_page.cta_hero_headline')
-  %p.CallToActionHero__lede= I18n.t('pages.landing_page.cta_hero_lede')
-  = link_to I18n.t('pages.landing_page.cta_hero_cta'), sign_up_path, class: 'CallToActionHero__button-solid'
+= hero do
+  = hero_headline I18n.t('pages.landing_page.cta_hero_headline')
+  = hero_lede do
+    = I18n.t('pages.landing_page.cta_hero_lede')
+  = button_to I18n.t('pages.landing_page.cta_hero_cta'), sign_up_path, class: 'Button--solid-dark'
 

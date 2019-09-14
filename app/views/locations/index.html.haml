@@ -1,17 +1,21 @@
 = title I18n.t('pages.locations.index.title')
-
-.LocationsCard
-  .LocationsCard__card-body_rounded
-    %h1.LocationsCard__card-title= I18n.t('pages.locations.index.title')
-    .LocationsCard__button-wrapper
-      = button_to I18n.t('pages.locations.index.create_button'), new_user_location_path(@user), method: :get, class: 'LocationsCard__button_solid'
+= card modifier: 'bottomBorder' do
+  = card_body do
+    = card_title I18n.t('pages.locations.index.title')
+    = ribbon do
+      = link_to new_user_location_path(@user), class: 'Button--outline-primary' do
+        %i{ class: 'fas fa-plus-circle' }
+        = I18n.t('pages.locations.index.create_button')
     - @locations.each do |location|
-      .LocationsCard__card-item
-        .LocationIconPanel
-          = link_to edit_user_location_path(@user, location), class: 'LocationIconPanel__icon-link' do
-            %i{ class: 'fas fa-pencil-alt fa-2x LocationIconPanel__icon-link_edit', title: I18n.t('pages.locations.index.edit') }
-          = link_to user_location_path(@user, location), method: 'delete', class: 'LocationIconPanel__icon-link', data: { confirm: I18n.t('pages.locations.index.confirm') } do
-            %i{ class: 'fas fa-trash-alt fa-2x LocationIconPanel__icon-link_delete', title: I18n.t('pages.locations.index.delete') }
-        .LocationsCard__location-info
-          %p= location.name
-          = format_address(location)
+      = card classes: 'Card--large' do
+        = card_header do
+          = card_header_text classes: 'u-Text--muted' do
+            = location.name
+          %span
+            = link_to edit_user_location_path(@user, location), class: 'IconLink--caution' do
+              %i{ class: 'fas fa-pencil-alt fa-2x LocationIconPanel__icon-link_edit', title: I18n.t('pages.locations.index.edit') }
+            = link_to user_location_path(@user, location), method: 'delete', class: 'IconLink--danger', data: { confirm: I18n.t('pages.locations.index.confirm') } do
+              %i{ class: 'fas fa-trash-alt fa-2x LocationIconPanel__icon-link_delete', title: I18n.t('pages.locations.index.delete') }
+        = card_body do
+          .u-Text--center
+            = format_address(location)

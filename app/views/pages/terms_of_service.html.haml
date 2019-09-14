@@ -1,7 +1,5 @@
 = title I18n.t('pages.terms_of_service.title')
 = description I18n.t('pages.terms_of_service.description')
-
-.TermsOfServiceCard
-  .TermsOfServiceCard__card-body_rounded
-    %h1.TermsOfServiceCard__card-title= I18n.t('pages.terms_of_service.title')
-    = I18n.t('pages.terms_of_service.body').html_safe
+= content_wrapper modifier: 'restricted' do
+  %h1= I18n.t('pages.terms_of_service.title')
+  = I18n.t('pages.terms_of_service.body').html_safe

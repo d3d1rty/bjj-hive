@@ -1,9 +1,8 @@
-.PasswordCard
-  .PasswordCard__card-body_rounded
-    = form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put } do |form|
-      .PasswordForm
-        .PasswordForm__form-group
-          = form.label :password
-          = form.password_field :password
-        .PasswordForm__form-action
-          = form.submit 'Save Password'
+= card do
+  = card_body do
+    = form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), method: :put, class: 'Form' do |form|
+      = form_group do
+        = form.label :password
+        = form.password_field :password
+      = form_action do
+        = form.submit 'Save Password', class: 'Button--solid-primary'
