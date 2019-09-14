@@ -1,32 +1,30 @@
 = title I18n.t('pages.users.new.title')
 = description I18n.t('pages.users.new.description')
 
-.UserCard
-  .UserCard__card-body_rounded-top
-    %h1.UserCard__card-title= I18n.t('pages.users.new.title')
-    = form_for @user do |f|
-      .UserForm
-        .UserForm__form-group
-          = f.label I18n.t('models.user.fields.first_name')
-          = f.text_field :first_name
-        .UserForm__form-group
-          = f.label I18n.t('models.user.fields.last_name')
-          = f.text_field :last_name
-        .UserForm__form-group
-          = f.label I18n.t('models.user.fields.handle')
-          = f.text_field :handle
-          %small.text-muted= I18n.t('pages.users.new.handle_hint')
-        .UserForm__form-group
-          = f.label I18n.t('models.user.fields.email')
-          = f.text_field :email, type: 'email'
-        .UserForm__form-group
-          = f.label I18n.t('models.user.fields.password')
-          = f.password_field :password
-        .text-centered
-          %p= I18n.t('pages.users.new.accept_policies')
-        .UserForm__form-action
-          = f.submit I18n.t('pages.users.new.form_action')
-  .UserCard__card-footer.text-centered
-    %p.text-muted
+= card do
+  = card_body do
+    = card_title I18n.t('pages.users.new.title')
+    = form_for @user, class: 'Form' do |f|
+      = form_group do
+        = f.label I18n.t('models.user.fields.first_name')
+        = f.text_field :first_name
+      = form_group do
+        = f.label I18n.t('models.user.fields.last_name')
+        = f.text_field :last_name
+      = form_group do
+        = f.label I18n.t('models.user.fields.handle')
+        = f.text_field :handle
+        %small.u-Text--muted= I18n.t('pages.users.new.handle_hint')
+      = form_group do
+        = f.label I18n.t('models.user.fields.email')
+        = f.text_field :email, type: 'email'
+      = form_group do
+        = f.label I18n.t('models.user.fields.password')
+        = f.password_field :password
+      %p.u-Text--center= I18n.t('pages.users.new.accept_policies')
+      = form_action do
+        = f.submit I18n.t('pages.users.new.form_action'), class: 'Button--solid-primary'
+  = card_footer do
+    %p.u-Text--muted.u-Text--center
       = I18n.t('pages.users.new.already_have_account')
-      = link_to I18n.t('pages.users.new.sign_in'), sign_in_path
+      = link_to I18n.t('pages.users.new.sign_in'), sign_in_path, class: 'Link--primary'

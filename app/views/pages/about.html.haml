@@ -1,7 +1,7 @@
 = title I18n.t('pages.about.title')
 = description I18n.t('pages.about.description')
-
-.AboutCard
-  .AboutCard__card-body_rounded
-    %h1.AboutCard__card-title= I18n.t('pages.about.title')
-    = I18n.t('pages.about.body').html_safe
+= card modifier: 'bottomBorder' do
+  = card_body do
+    = card_title I18n.t('pages.about.title')
+    = content_wrapper do
+      = I18n.t('pages.about.body').html_safe

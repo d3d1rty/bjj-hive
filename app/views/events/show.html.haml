@@ -1,66 +1,73 @@
 = title @event.name
 = description I18n.t('pages.events.show.description')
-
-.EventCard
+= card modifier: 'bottomBorder' do
   = render partial: 'events/event_header', locals: { event: @event }
-  .EventCard__card-body_not-rounded
-    %h1.EventCard__card-title= @event.name
-    %div.EventCard__card-summary
+  = card_body do
+    = card_title @event.name
+    = content_wrapper do
       = markdown(@event.summary)
-    .EventCard__info-box-group
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.user')
-        %p= @event.user.handle
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.location')
-        = format_address(@event.location)
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.starts_at')
-        %p= "#{format_date(@event.start_date)} at #{format_time(@event.start_time, @event.time_zone)}"
-      .EventCard__info-box
-        %p= I18n.t('models.event.fields.ends_at')
-        %p= "#{format_date(@event.end_date)} at #{format_time(@event.end_time, @event.time_zone)}"
-  .EventCard__card-footer.text-right
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.user')
+        = info_box_content do
+          = @event.user.handle
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.location')
+        = info_box_content do
+          = format_address(@event.location)
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.starts_at')
+        = info_box_content do
+          = "#{format_date(@event.start_date)} at #{format_time(@event.start_time, @event.time_zone)}"
+    = info_box do
+      = info_box_group do
+        = info_box_label I18n.t('models.event.fields.ends_at')
+        = info_box_content do
+          = "#{format_date(@event.end_date)} at #{format_time(@event.end_time, @event.time_zone)}"
+  = card_footer classes: 'u-Text--right' do
     - if signed_in?
-      = link_to I18n.t('pages.events.show.leave-comment'), '#js-comment-reply-form'
+      = card_footer_text do
+        = link_to I18n.t('pages.events.show.leave-comment'), '#js-comment-reply-form', class: 'Link--primary'
 - unless @comments.empty?
-  %hr
+  %hr.u-HorizontalRule--medium
   - @comments.each do |comment|
-    .CommentCard{ id: comment.id }
-      .CommentCard__card-header
-        %p.text-muted= comment_reply_to_info(comment)
-      .CommentCard__card-body_not-rounded
+    = card id: comment.id, modifier: 'leftBorder' do
+      = card_header do
+        = card_header_text classes: 'u-Text--muted' do
+          = comment_reply_to_info(comment)
+      = card_body do
         - if comment.parent_id
           %p
             Replying to:
-            = link_to comment_reply_to_info(comment.parent), "##{comment.parent_id}"
+            = link_to comment_reply_to_info(comment.parent), "##{comment.parent_id}", class: 'Link--primary'
         %p= comment.body
-      .CommentCard__card-footer.text-right
+      = card_footer classes: 'u-Text--right' do
         - if signed_in?
           %p
-            = link_to 'Add a Reply', '#js-comment-reply-form', class: 'js-reply-to-link', 'data-parent': comment.id, 'data-information': comment_reply_to_info(comment), remote: true
+            = link_to 'Add a Reply', '#js-comment-reply-form', class: 'js-reply-to-link Link--primary', 'data-parent': comment.id, 'data-information': comment_reply_to_info(comment), remote: true
         - unless comment.leaf?
           %p
             Replies:
             - comment.child_ids.each_with_index do |child_id, index|
               - if index.zero?
                 \|
-              = link_to "##{child_id}", "##{child_id}"
+              = link_to "##{child_id}", "##{child_id}", class: 'Link--primary'
               \|
 - if signed_in?
-  %hr
-  .CommentFormCard{ id: 'js-comment-reply-form' }
-    .CommentFormCard__card-body_rounded
-      %h1.CommentFormCard__card-title= I18n.t('pages.comments.new.title')
-      = form_for [@event, Comment.new] do |f|
-        .CommentForm
-          = f.hidden_field :event_id, value: @event.id
-          .CommentForm__form-group
-            = f.label 'Reply-to'
-            = text_field_tag 'js-reply-to-display', '', id: 'js-reply-to-display', readonly: 'true'
-            = f.hidden_field :parent_id, id: 'js-reply-to-hidden', readonly: 'true'
-          .CommentForm__form-group
-            = f.label I18n.t('models.comment.fields.body')
-            ~ f.text_area :body
-          .CommentForm__form-action
-            = f.submit I18n.t('pages.comments.form.form_action')
+  %hr.u-HorizontalRule--medium
+  = card id: 'js-comment-reply-form', modifier: 'bottomBorder' do
+    = card_body do
+      = card_title I18n.t('pages.comments.new.title')
+      = form_for [@event, Comment.new], class: 'Form' do |f|
+        = f.hidden_field :event_id, value: @event.id
+        = form_group do
+          = f.label 'Reply-to'
+          = text_field_tag 'js-reply-to-display', '', id: 'js-reply-to-display', readonly: 'true'
+          = f.hidden_field :parent_id, id: 'js-reply-to-hidden', readonly: 'true'
+        = form_group do
+          = f.label I18n.t('models.comment.fields.body')
+          ~ f.text_area :body
+        = form_action do
+          = f.submit I18n.t('pages.comments.form.form_action'), class: 'Button--solid-primary'

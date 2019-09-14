@@ -1,6 +1,5 @@
 = title I18n.t('pages.events.edit.title')
-
-.EventCard.EventFormCard
-  .EventCard__card-body_rounded
-    %h1.EventCard__card-title= I18n.t('pages.events.edit.title')
+= card modifier: 'bottomBorder' do
+  = card_body do
+    = card_title I18n.t('pages.events.edit.title')
     = render 'events/form'

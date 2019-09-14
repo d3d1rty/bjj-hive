@@ -1,6 +1,5 @@
 = title I18n.t('pages.locations.new.title')
-
-.LocationCard.LocationFormCard
-  .LocationCard__card-body_rounded
-    %h1.LocationCard__card-title= I18n.t('pages.locations.new.title')
+= card modifier: 'bottomBorder' do
+  = card_body do
+    = card_title I18n.t('pages.locations.new.title')
     = render 'form'

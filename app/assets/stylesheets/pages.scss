@@ -1,0 +1,41 @@
+.FeatureCard {
+  .Card__body {
+    @media screen and (min-width: viewport-size("L")) {
+      height: 325px;
+    }
+  }
+}
+
+.EventSearchForm {
+  @extend .InlineForm;
+
+  width: 97%;
+  margin: auto;
+
+  @media screen and (min-width: viewport-size("M")) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: viewport-size("L")) {
+    width: 50%;
+  }
+}
+
+// Theme overrides
+.Card--large {
+  @media screen and (min-width: viewport-size("S")) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: viewport-size("M")) {
+    width: 85%;
+  }
+
+  @media screen and (min-width: viewport-size("L")) {
+    width: 80%;
+  }
+}
+
+.Card__header {
+  align-items: center;
+}

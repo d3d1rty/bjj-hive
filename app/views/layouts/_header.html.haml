@@ -1,13 +1,25 @@
-- if !signed_in? && session[:accepted_cookies].nil?
-  .MushakaHeader.MushakaHeader_cookies-prompt
-    %p
-      = I18n.t('header.cookies_prompt').html_safe
-      = link_to I18n.t('header.accept_cookies'), accept_cookies_path, method: 'post'
-- if flash[:alert]
-  .MushakaHeader.MushakaHeader_alert
-    %ul
-      - flash[:alert].each do |msg|
-        %li= msg
-- elsif flash[:notice]
-  .MushakaHeader.MushakaHeader_notice
-    %p= flash[:notice]
+.Header
+  - if !signed_in? && session[:accepted_cookies].blank?
+    .Flash
+      .Flash__body--info
+        %p.Flash__text
+          = I18n.t('header.cookies_prompt').html_safe
+          = link_to I18n.t('header.accept_cookies'), accept_cookies_path, method: 'post', class: 'Link--primary'
+  - if flash[:info]
+    .Flash
+      .Flash__body--info
+      %p.Flash__text= flash[:info]
+  - if flash[:notice]
+    .Flash
+      .Flash__body--safe
+        %p.Flash__text= flash[:notice]
+  - if flash[:caution]
+    .Flash
+      .Flash__body--caution
+        %p.Flash__text= flash[:caution]
+  - if flash[:alert]
+    .Flash
+      .Flash__body--danger
+        %ul.Flash__list
+          - flash[:alert].each do |msg|
+            %li= msg

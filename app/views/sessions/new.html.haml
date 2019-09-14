@@ -1,22 +1,20 @@
 = title I18n.t('pages.sessions.new.title')
 = description I18n.t('pages.sessions.new.description')
-
-.SessionCard
-  .SessionCard__card-body_rounded-top
-    %h1.SessionCard__card-title= I18n.t('pages.sessions.new.title')
-    = form_for :session, url: session_path do |f|
-      .SessionForm
-        .SessionForm__form-group
-          = f.label I18n.t('models.session.fields.email')
-          = f.text_field :email
-        .SessionForm__form-group
-          = f.label I18n.t('models.session.fields.password')
-          = f.password_field :password
-        .SessionForm__form-action
-          = f.submit I18n.t('pages.sessions.new.form_action')
-  .SessionCard__card-footer.text-centered
+= card do
+  = card_body do
+    = card_title I18n.t('pages.sessions.new.title')
+    = form_for :session, url: session_path, class: 'Form' do |f|
+      = form_group do
+        = f.label I18n.t('models.session.fields.email')
+        = f.text_field :email
+      = form_group do
+        = f.label I18n.t('models.session.fields.password')
+        = f.password_field :password
+      = form_action do
+        = f.submit I18n.t('pages.sessions.new.form_action'), class: 'Button--solid-primary'
+  = card_footer classes: 'u-Text--center' do
     - if Clearance.configuration.allow_sign_up?
-      %p.text-muted
+      %p.u-Text--muted
         = I18n.t('pages.sessions.new.no_account_yet')
-        = link_to I18n.t('pages.sessions.new.sign_up'), sign_up_path
-      %p= link_to I18n.t('pages.sessions.new.forgot_password'), new_password_path
+        = link_to I18n.t('pages.sessions.new.sign_up'), sign_up_path, class: 'Link--primary'
+    %p= link_to I18n.t('pages.sessions.new.forgot_password'), new_password_path, class: 'Link--primary'

@@ -1,23 +1,22 @@
-= form_for [@user, @location] do |f|
-  .LocationForm
-    = f.hidden_field :user_id
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.name')
-      = f.text_field :name
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.street_address')
-      = f.text_field :street_address
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.city')
-      = f.text_field :city
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.state')
-      = f.text_field :state
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.zip')
-      = f.text_field :zip
-    .LocationForm__form-group
-      = f.label I18n.t('models.location.fields.country')
-      = f.text_field :country
-    .LocationForm__form-action
-      = f.submit I18n.t('pages.locations.form.form_action')
+= form_for [@user, @location], class: 'Form' do |f|
+  = f.hidden_field :user_id
+  = form_group do
+    = f.label I18n.t('models.location.fields.name')
+    = f.text_field :name
+  = form_group do
+    = f.label I18n.t('models.location.fields.street_address')
+    = f.text_field :street_address
+  = form_group do
+    = f.label I18n.t('models.location.fields.city')
+    = f.text_field :city
+  = form_group do
+    = f.label I18n.t('models.location.fields.state')
+    = f.text_field :state
+  = form_group do
+    = f.label I18n.t('models.location.fields.zip')
+    = f.text_field :zip
+  = form_group do
+    = f.label I18n.t('models.location.fields.country')
+    = f.text_field :country
+  = form_action do
+    = f.submit I18n.t('pages.locations.form.form_action'), class: 'Button--solid-primary'

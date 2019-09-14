@@ -1,5 +1,5 @@
-.EventCard__card-header
-  %p.text-muted
+= card_header do
+  = card_header_text classes: 'u-Text--muted' do
     = event.category
     |
     - if event.fee.nil? || event.fee.zero?
@@ -7,17 +7,17 @@
     - else
       = format_currency(event.fee)
   - if signed_in?
-    .EventIconPanel
-      %i{ class: 'fas fa-star fa-2x EventIconPanel__icon-link EventIconPanel__icon-link_favorite js-favorite-star',
+    %span
+      %i{ class: 'fas fa-star fa-2x IconLink--primary js-favorite-star',
           'data-url': unfavorite_user_event_path(event.user.id, event), 'data-method': 'delete',
           title: I18n.t('pages.events.event_header.unfavorite'),
           style: "#{ 'display:none;' unless current_user.favorite_events.exists?(event: event)}"}
-      %i{ class: 'far fa-star fa-2x EventIconPanel__icon-link EventIconPanel__icon-link_favorite js-favorite-star',
+      %i{ class: 'far fa-star fa-2x IconLink--primary js-favorite-star',
           'data-url': favorite_user_event_path(event.user.id, event), 'data-method': 'post',
           title: I18n.t('pages.events.event_header.favorite'),
           style: "#{ 'display:none;' if current_user.favorite_events.exists?(event: event)}"}
       - if event.user == current_user
-        = link_to edit_user_event_path(event.user.id, event), class: 'EventIconPanel__icon-link' do
-          %i{ class: 'fas fa-pencil-alt fa-2x EventIconPanel__icon-link_edit', title: I18n.t('pages.events.event_header.edit') }
-        = link_to user_event_path(event.user.id, event), method: 'delete', class: 'EventIconPanel__icon-link', data: { confirm: I18n.t('pages.events.event_header.confirm') } do
-          %i{ class: 'fas fa-trash-alt fa-2x EventIconPanel__icon-link_delete', title: I18n.t('pages.events.event_header.delete') }
+        = link_to edit_user_event_path(event.user.id, event), class: 'IconLink--caution' do
+          %i{ class: 'fas fa-pencil-alt fa-2x', title: I18n.t('pages.events.event_header.edit') }
+        = link_to user_event_path(event.user.id, event), method: 'delete', class: 'IconLink--danger', data: { confirm: I18n.t('pages.events.event_header.confirm') } do
+          %i{ class: 'fas fa-trash-alt fa-2x', title: I18n.t('pages.events.event_header.delete') }

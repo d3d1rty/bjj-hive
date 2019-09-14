@@ -1,6 +1,7 @@
-.AdminCard
-  .AdminCard__card-body_rounded
-    %h1.AdminCard__card-title= I18n.t('pages.admin.index.title')
-    = link_to blazer_path, class: 'AdminCard__item' do
+= title I18n.t('pages.admin.index.title')
+= card modifier: 'bottomBorder', classes: 'Card--medium' do
+  = card_body do
+    = card_title I18n.t('pages.admin.index.title')
+    = link_to blazer_path, class: 'BoxLink--dark' do
       = I18n.t('pages.admin.index.analytics_link')
       %i{ class: 'fas fa-chevron-right', title: I18n.t('pages.admin.index.analytics_link') }

@@ -1,12 +1,11 @@
 = title I18n.t('pages.users.location_prompt.title')
-
-.LocationCard.LocationFormCard
-  .LocationCard__card-body_rounded-top
+= card classes: 'Card--medium' do
+  = card_body do
     %h1.LocationCard__card-title= I18n.t('pages.users.location_prompt.title')
     %p= I18n.t('pages.users.location_prompt.message').html_safe
     %hr
     = render 'locations/form'
-  .LocationCard__card-footer.text-centered
-    %p.text-muted
+  = card_footer do
+    %p.u-Text--muted.u-Text--center
       = I18n.t('pages.users.location_prompt.registering_as')
-      = link_to I18n.t('pages.users.location_prompt.need_to_change'), organizer_prompt_path(@user)
+      = link_to I18n.t('pages.users.location_prompt.need_to_change'), organizer_prompt_path(@user), class: 'Link--primary'
