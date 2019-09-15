@@ -6,6 +6,8 @@
 #
 # This controller provides actions to access static pages.
 class PagesController < ApplicationController
+  invisible_captcha only: :contact
+
   ##
   # GET /
   def landing_page; end
