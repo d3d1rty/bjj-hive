@@ -384,87 +384,6 @@ en:
         - "Investment Opportunity"
         - "Other"
       form_action: "Submit"
-    markdown:
-      title: "Markdown Help"
-      description: "You can easily use markdown syntax to add formatting to your events and posts on BJJ Hive. This page demonstrates the basics of markdown."
-      last_updated: "2019-07-26"
-      headings_section: "Headings"
-      headings_explanation: "You can include headings and subheadings using markdown. This allows you to better organize the structure of your postings. There are multiple heading levels, as shown below."
-      heading_level_2: "Heading Level 2"
-      heading_level_2_example:
-        "
-        ```
-        ## Heading Level 2
-        ```
-        "
-      heading_level_3: "Heading Level 3"
-      heading_level_3_example:
-        "
-        ```
-        ### Heading Level 3
-        ```
-        "
-      heading_level_4: "Heading Level 4"
-      heading_level_4_example:
-        "
-        ```
-        #### Heading Level 4
-        ```
-        "
-      heading_level_5: "Heading Level 5"
-      heading_level_5_example:
-        "
-        ```
-        ##### Heading Level 5
-        ```
-        "
-      text_section: "Text Formatting"
-      text_explanation: "You can also format the text of your postings. Some options include making your text bold, italicizing text, underlining text, or even inserting links."
-      italicized: "This contains <em>italicized</em> text."
-      italicized_example: "`This contains *italicized* text.`"
-      bold: "This contains <strong>bold</strong> text."
-      bold_example: "`This contains **bold** text.`"
-      underline: "This contains <u>underlined</u> text."
-      underline_example: "`This contains _underlined_ text.`"
-      link: "This contains a <a href=\"https://bjjhive.com\">link</a>."
-      link_example: "`This contains a [link](https://bjjhive.com).`"
-      block_section: "Block Elements"
-      block_explanation: "You can easily add both unordered lists and ordered lists to your postings, as well as blockquotes."
-      blockquote: "This is a blockquote"
-      blockquote_example:
-        "
-        ```
-        > This is a blockquote
-        ```
-        "
-      ulist:
-        "
-        <ul><li>Item One</li><li>Item Two</li><li>Item Three</li></ul>
-        "
-      ulist_example:
-        "
-        ```
-        * Item One
-
-        * Item Two
-
-        * Item Three
-        ```
-        "
-      olist:
-        "
-        <ol><li>Item One</li><li>Item Two</li><li>Item Three</li></ol>
-        "
-      olist_example:
-        "
-        ```
-        1 Item One
-
-        2 Item Two
-
-        3 Item Three
-        ```
-        "
     admin:
       index:
         title: "Admin Panel"
@@ -491,7 +410,6 @@ en:
         confirm: "Are you sure?"
       form:
         date_placeholder: "mm/dd/yyyy"
-        summary_hint: "This field is <a class=\"Link--primary\" href=\"/help/markdown\" target=\"_blank\">markdown enabled</a>."
         form_action: "Save"
       new:
         title: "Create Event"

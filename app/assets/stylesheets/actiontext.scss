@@ -1,0 +1,42 @@
+@import "trix/dist/trix";
+
+.trix-content {
+  .attachment-gallery {
+    > action-text-attachment,
+    > .attachment {
+      flex: 1 0 33%;
+      padding: 0 0.5em;
+      max-width: 33%;
+    }
+
+    &.attachment-gallery--2,
+    &.attachment-gallery--4 {
+      > action-text-attachment,
+      > .attachment {
+        flex-basis: 50%;
+        max-width: 50%;
+      }
+    }
+  }
+
+  action-text-attachment {
+    .attachment {
+      padding: 0 !important;
+      max-width: 100% !important;
+    }
+  }
+}
+
+trix-toolbar .trix-button-row {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+
+trix-toolbar .trix-button-group:not(:first-child).trix-button-group--history-tools {
+  margin-left: 0;
+}
+
+trix-toolbar .trix-button-group--file-tools {
+  display: none;
+}

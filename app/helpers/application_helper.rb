@@ -6,29 +6,6 @@
 #
 # This helper module provides methods for use across application views.
 module ApplicationHelper
-  ##
-  # = MarkdownPreprocessor
-  # Author::    Richard Davis
-  #
-  # This class overrides the default redcarpet processor.
-  class MarkdownPreprocessor < Redcarpet::Render::HTML
-    def block_code(*)
-      nil
-    end
-  end
-
-  def markdown(content)
-    preprocessor = MarkdownPreprocessor.new(filter_html: true, no_images: false, no_styles: true, hard_wrap: true)
-    @markdown ||= Redcarpet::Markdown.new(preprocessor, autolink: true,
-                                                        footnotes: false,
-                                                        space_after_headers: true,
-                                                        fenced_code_blocks: true,
-                                                        underline: true,
-                                                        highlight: true,
-                                                        tables: true)
-    @markdown.render(content).html_safe
-  end
-
   def format_date(date)
     date.strftime('%B %e, %Y')
   end

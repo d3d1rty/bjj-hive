@@ -1,7 +1,6 @@
 = title I18n.t('pages.users.new.title')
 = description I18n.t('pages.users.new.description')
-
-= card do
+= card modifier: 'bottomBorder' do
   = card_body do
     = card_title I18n.t('pages.users.new.title')
     = form_for @user, class: 'Form' do |f|
@@ -25,6 +24,6 @@
       = form_action do
         = f.submit I18n.t('pages.users.new.form_action'), class: 'Button--solid-primary'
   = card_footer do
-    %p.u-Text--muted.u-Text--center
+    = card_footer_text classes: 'u-Text--muted u-Text--center' do
       = I18n.t('pages.users.new.already_have_account')
       = link_to I18n.t('pages.users.new.sign_in'), sign_in_path, class: 'Link--primary'

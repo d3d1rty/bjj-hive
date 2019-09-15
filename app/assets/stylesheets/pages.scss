@@ -3,6 +3,10 @@
     @media screen and (min-width: viewport-size("L")) {
       height: 325px;
     }
+
+    ul {
+      @extend %default-ulist-styling;
+    }
   }
 }
 

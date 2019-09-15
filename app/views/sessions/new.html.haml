@@ -1,6 +1,6 @@
 = title I18n.t('pages.sessions.new.title')
 = description I18n.t('pages.sessions.new.description')
-= card do
+= card modifier: 'bottomBorder' do
   = card_body do
     = card_title I18n.t('pages.sessions.new.title')
     = form_for :session, url: session_path, class: 'Form' do |f|
@@ -14,7 +14,8 @@
         = f.submit I18n.t('pages.sessions.new.form_action'), class: 'Button--solid-primary'
   = card_footer classes: 'u-Text--center' do
     - if Clearance.configuration.allow_sign_up?
-      %p.u-Text--muted
+      = card_footer_text classes: 'u-Text--muted' do
         = I18n.t('pages.sessions.new.no_account_yet')
         = link_to I18n.t('pages.sessions.new.sign_up'), sign_up_path, class: 'Link--primary'
-    %p= link_to I18n.t('pages.sessions.new.forgot_password'), new_password_path, class: 'Link--primary'
+    = card_footer_text do
+      = link_to I18n.t('pages.sessions.new.forgot_password'), new_password_path, class: 'Link--primary'

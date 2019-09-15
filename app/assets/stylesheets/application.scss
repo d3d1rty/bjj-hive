@@ -1,5 +1,6 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "actiontext";
 
 @font-face {
   font-family: 'open_sansregular';
@@ -49,3 +50,35 @@ $heading-regular-font-family: 'poppinsregular';
 
 @import "layout";
 @import "pages";
+
+trix-editor {
+  @extend %basic-form-field-styling;
+}
+
+.trix-content {
+  h1 {
+    @extend %heading-4-style;
+  }
+
+  div {
+    @extend %default-body-text-styling;
+
+    a {
+      @extend %default-link-styling;
+      @include link-color-scheme(theme-color('primary'));
+    }
+  }
+
+  blockquote {
+    @extend %default-blockquote-styling;
+  }
+
+  code, pre {
+    @extend %default-body-text-styling;
+    @extend %default-code-styling;
+  }
+
+  ul {
+    @extend %default-ulist-styling;
+  }
+}

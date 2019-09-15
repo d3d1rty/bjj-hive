@@ -2,5 +2,5 @@
 
 ##
 # Base job for application.
-# class ApplicationJob < ActiveJob::Base
-# end
+class ApplicationJob < ActiveJob::Base
+end

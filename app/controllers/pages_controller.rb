@@ -8,9 +8,7 @@
 class PagesController < ApplicationController
   ##
   # GET /
-  def landing_page
-    render layout: 'alternate'
-  end
+  def landing_page; end
 
   ##
   # GET /about
@@ -37,10 +35,6 @@ class PagesController < ApplicationController
       redirect_to contact_us_path, alert: I18n.t('alerts.contact_us.failure')
     end
   end
-
-  ##
-  # GET /help/markdown
-  def markdown; end
 
   ##
   # GET /sitemap.xml

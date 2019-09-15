@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :event do
     name { 'MyString' }
-    summary { 'MyText' }
+    summary { '<p>In a <i>million</i> stars!</p>' }
     category { 'Conference' }
     fee { '9.99' }
     start_date { '2019-04-19' }
