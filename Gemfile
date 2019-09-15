@@ -43,6 +43,8 @@ gem 'blazer', '~> 2.1'
 gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 # Use closure_tree for nested comments and replies
 gem 'closure_tree', '~> 7.0'
+# Use invisible_captcha for honeypot on public forms
+gem 'invisible_captcha', '~> 0.12.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a console

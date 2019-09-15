@@ -4,6 +4,7 @@
   = card_body do
     = card_title I18n.t('pages.contact_us.title')
     = form_tag contact_path, method: 'post', class: 'Form' do
+      = invisible_captcha
       = form_group do
         = label_tag I18n.t('mail.contact_us.fields.name')
         = text_field_tag :name
