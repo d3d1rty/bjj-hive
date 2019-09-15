@@ -58,13 +58,6 @@ describe PagesController, type: :request do
       # end
     end
 
-    describe 'GET #markdown' do
-      it 'displays the markdown help page' do
-        get markdown_path
-        expect(response).to have_http_status(:success)
-      end
-    end
-
     describe 'GET #sitemap' do
       it 'renders the sitemap' do
         get sitemap_path
@@ -124,13 +117,6 @@ describe PagesController, type: :request do
       #     expect(response).to redirect_to contact_us_path
       #   end
       # end
-    end
-
-    describe 'GET #markdown' do
-      it 'displays the markdown help page' do
-        get markdown_path
-        expect(response).to have_http_status(:success)
-      end
     end
 
     describe 'GET #sitemap' do

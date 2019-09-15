@@ -11,8 +11,7 @@
     = f.select :category, options_for_select(Event.permitted_categories)
   = form_group do
     = f.label I18n.t('models.event.fields.summary')
-    ~ f.text_area :summary
-    %small.u-Text--muted= I18n.t('pages.events.form.summary_hint').html_safe
+    = f.rich_text_area :summary
   = form_group do
     = f.label I18n.t('models.event.fields.fee')
     = f.number_field :fee, value: number_to_currency(f.object.fee.to_f, delimiter: '', unit: ''), step: 0.01

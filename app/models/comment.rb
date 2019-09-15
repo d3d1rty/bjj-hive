@@ -10,6 +10,7 @@ class Comment < ApplicationRecord
   belongs_to :event
 
   has_closure_tree dependent: :destroy
+  has_rich_text :body
 
   validates :body, presence: true, length: { maximum: 10_000 }
 end

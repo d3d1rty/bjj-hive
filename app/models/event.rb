@@ -30,6 +30,8 @@ class Event < ApplicationRecord
 
   scope :not_past, -> { where('start_date > ?', 1.day.ago) }
 
+  has_rich_text :summary
+
   ##
   # Provides search query for event model
   def self.search(query)

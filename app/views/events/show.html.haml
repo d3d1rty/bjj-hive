@@ -1,11 +1,10 @@
 = title @event.name
 = description I18n.t('pages.events.show.description')
-= card modifier: 'bottomBorder' do
+= card modifier: 'bottomBorder', classes: 'Card--large' do
   = render partial: 'events/event_header', locals: { event: @event }
   = card_body do
     = card_title @event.name
-    = content_wrapper do
-      = markdown(@event.summary)
+    = @event.summary
     = info_box do
       = info_box_group do
         = info_box_label I18n.t('models.event.fields.user')
@@ -57,7 +56,7 @@
               \|
 - if signed_in?
   %hr.u-HorizontalRule--medium
-  = card id: 'js-comment-reply-form', modifier: 'bottomBorder' do
+  = card id: 'js-comment-reply-form', modifier: 'bottomBorder', classes: 'Card--large' do
     = card_body do
       = card_title I18n.t('pages.comments.new.title')
       = form_for [@event, Comment.new], class: 'Form' do |f|
@@ -68,6 +67,6 @@
           = f.hidden_field :parent_id, id: 'js-reply-to-hidden', readonly: 'true'
         = form_group do
           = f.label I18n.t('models.comment.fields.body')
-          ~ f.text_area :body
+          = f.rich_text_area :body
         = form_action do
           = f.submit I18n.t('pages.comments.form.form_action'), class: 'Button--solid-primary'

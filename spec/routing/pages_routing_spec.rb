@@ -28,10 +28,6 @@ describe PagesController, type: :routing do
       expect(post: '/contact').to route_to('pages#contact')
     end
 
-    it 'routes to #markdown' do
-      expect(get: '/help/markdown').to route_to('pages#markdown')
-    end
-
     it 'routes to #sitemap' do
       expect(get: '/sitemap.xml').to route_to(format: 'xml', controller: 'pages', action: 'sitemap')
     end

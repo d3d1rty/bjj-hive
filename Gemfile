@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'geocoder', '~> 1.5', '>= 1.5.1'
 # Use kaminari for pagination
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
-# Use redcarpet for markdown capability
-gem 'redcarpet', '~> 3.4'
 # Use rack-attack to throttle abusive requests
 gem 'rack-attack', '~> 6.0'
 # Use ahoy for analytics

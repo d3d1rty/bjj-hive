@@ -14,7 +14,7 @@ describe 'events/new', type: :view do
   it 'renders the new event form' do
     assert_select 'form[action=?][method=?]', user_events_path(@user), 'post' do
       assert_select 'input[name=?]', 'event[name]'
-      assert_select 'textarea[name=?]', 'event[summary]'
+      assert_select 'trix-editor'
       assert_select 'input[name=?]', 'event[fee]'
       assert_select 'input[name=?]', 'event[start_date]'
       assert_select 'select[name=?]', 'event[start_time_hr]'

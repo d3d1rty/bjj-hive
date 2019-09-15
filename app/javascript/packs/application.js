@@ -84,3 +84,6 @@ document.addEventListener('turbolinks:load', () => {
     })
   })
 }, false)
+
+require("trix")
+require("@rails/actiontext")
