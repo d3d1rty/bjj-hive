@@ -4,27 +4,32 @@
   = render partial: 'events/event_header', locals: { event: @event }
   = card_body do
     = card_title @event.name
-    = @event.summary
-    = info_box do
-      = info_box_group do
-        = info_box_label I18n.t('models.event.fields.user')
-        = info_box_content do
-          = @event.user.handle
-    = info_box do
-      = info_box_group do
-        = info_box_label I18n.t('models.event.fields.location')
-        = info_box_content do
-          = format_address(@event.location)
-    = info_box do
-      = info_box_group do
-        = info_box_label I18n.t('models.event.fields.starts_at')
-        = info_box_content do
-          = "#{format_date(@event.start_date)} at #{format_time(@event.start_time, @event.time_zone)}"
-    = info_box do
-      = info_box_group do
-        = info_box_label I18n.t('models.event.fields.ends_at')
-        = info_box_content do
-          = "#{format_date(@event.end_date)} at #{format_time(@event.end_time, @event.time_zone)}"
+    .EventDetails
+      .EventDetails__group
+        = info_box do
+          = info_box_group do
+            = info_box_label I18n.t('models.event.fields.user')
+            = info_box_content do
+              = @event.user.handle
+        = info_box do
+          = info_box_group do
+            = info_box_label I18n.t('models.event.fields.location')
+            = info_box_content do
+              = format_address(@event.location)
+      .EventDetails__group
+        = info_box do
+          = info_box_group do
+            = info_box_label I18n.t('models.event.fields.starts_at')
+            = info_box_content do
+              = format_date_and_zone(@event.start_date, @event.time_zone)
+        = info_box do
+          = info_box_group do
+            = info_box_label I18n.t('models.event.fields.ends_at')
+            = info_box_content do
+              = format_date_and_zone(@event.end_date, @event.time_zone)
+    - unless @event.summary.blank?
+      %hr.u-HorizontalRule--small
+      = @event.summary
   = card_footer classes: 'u-Text--right' do
     - if signed_in?
       = card_footer_text do
@@ -56,16 +61,13 @@
               \|
 - if signed_in?
   %hr.u-HorizontalRule--medium
-  = card id: 'js-comment-reply-form', modifier: 'bottomBorder', classes: 'Card--large' do
+  = card id: 'js-comment-reply-form' do
     = card_body do
       = card_title I18n.t('pages.comments.new.title')
       = form_for [@event, Comment.new], class: 'Form' do |f|
         = f.hidden_field :event_id, value: @event.id
-        = form_group do
-          = f.label 'Reply-to'
-          = text_field_tag 'js-reply-to-display', '', id: 'js-reply-to-display', readonly: 'true'
-          = f.hidden_field :parent_id, id: 'js-reply-to-hidden', readonly: 'true'
-        = form_group do
+        = f.hidden_field :parent_id, id: 'js-reply-to-hidden', readonly: 'true'
+        = form_group modifier: 'boxed' do
           = f.label I18n.t('models.comment.fields.body')
           = f.rich_text_area :body
         = form_action do

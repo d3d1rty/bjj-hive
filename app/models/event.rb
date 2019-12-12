@@ -7,9 +7,6 @@
 # This model handles data and methods for event objects.
 class Event < ApplicationRecord
   extend FriendlyId
-  friendly_id :slug_candidates, use: :slugged
-
-  attr_accessor :start_time_hr, :start_time_min, :start_time_period, :end_time_hr, :end_time_min, :end_time_period
 
   belongs_to :user
   belongs_to :location
@@ -17,20 +14,30 @@ class Event < ApplicationRecord
   has_many :favorited_by, through: :favorite_events, source: :user
   has_many :comments
 
-  reverse_geocoded_by 'locations.latitude', 'locations.longitude'
-
   validates :name, presence: true, length: { maximum: 50 }
   validates :summary, presence: true, length: { maximum: 1000 }
   validates :start_date, presence: true
-  validates :start_time, presence: true
   validates :end_date, presence: true
-  validates :end_time, presence: true
   validates :time_zone, presence: true
   validate :category_must_be_permitted, :start_must_come_before_end
 
   scope :not_past, -> { where('start_date > ?', 1.day.ago) }
 
   has_rich_text :summary
+  friendly_id :slug_candidates, use: :slugged
+  reverse_geocoded_by 'locations.latitude', 'locations.longitude'
+
+  def start_date
+    return nil if self[:start_date].blank?
+
+    Time.use_zone(self[:time_zone]) { self[:start_date] }.strftime('%b %e, %Y %l:%M %p')
+  end
+
+  def end_date
+    return nil if self[:end_date].blank?
+
+    Time.use_zone(self[:time_zone]) { self[:end_date] }.strftime('%b %e, %Y %l:%M %p')
+  end
 
   ##
   # Provides search query for event model
@@ -73,18 +80,6 @@ class Event < ApplicationRecord
     location&.city
   end
 
-  # ##
-  # # DateTime object representation of the event start time.
-  # def starts_at
-  #   Time.new(start_date.year, start_date.month, start_date.day, start_time.hour, start_time.min, start_time.sec)
-  # end
-
-  # ##
-  # # DateTime object representation of the event end time.
-  # def ends_at
-  #   Time.new(end_date.year, end_date.month, end_date.day, end_time.hour, end_time.min, end_time.sec)
-  # end
-
   ##
   # Validation for categories
   def category_must_be_permitted
@@ -100,6 +95,6 @@ class Event < ApplicationRecord
   ##
   # Checks if any of the date fields have been provided.
   def date_field_present?
-    start_date.present? || end_date.present?
+    start_date.present? && end_date.present?
   end
 end

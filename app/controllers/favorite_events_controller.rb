@@ -14,7 +14,7 @@ class FavoriteEventsController < ApplicationController
   ##
   # GET /users/:user_id/favorites
   def index
-    @favorite_events = @user.favorites.page(params[:page]).per(10).order(start_time: :desc)
+    @favorite_events = @user.favorites.page(params[:page]).per(10).order(start_date: :desc)
   end
 
   ##

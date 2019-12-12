@@ -409,7 +409,7 @@ en:
         delete: "Delete this event"
         confirm: "Are you sure?"
       form:
-        date_placeholder: "mm/dd/yyyy"
+        date_placeholder: "Pick a date..."
         form_action: "Save"
       new:
         title: "Create Event"

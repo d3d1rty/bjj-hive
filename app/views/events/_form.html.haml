@@ -1,40 +1,40 @@
 = form_for [@user, @event], class: 'Form' do |f|
   = f.hidden_field :user_id, value: @user.id
-  = form_group do
-    = f.label I18n.t('models.event.fields.name')
-    = f.text_field :name
-  = form_group do
-    = f.label I18n.t('models.event.fields.location')
-    = f.collection_select :location_id, @user.locations.all, :id, ->(location){ location.name }
-  = form_group do
-    = f.label I18n.t('models.event.fields.category')
-    = f.select :category, options_for_select(Event.permitted_categories)
-  = form_group do
-    = f.label I18n.t('models.event.fields.summary')
-    = f.rich_text_area :summary
-  = form_group do
-    = f.label I18n.t('models.event.fields.fee')
-    = f.number_field :fee, value: number_to_currency(f.object.fee.to_f, delimiter: '', unit: ''), step: 0.01
-  = form_group do
-    = f.label I18n.t('models.event.fields.start_date')
-    = f.date_field :start_date, start_year: DateTime.now.year, end_year: (DateTime.now.year + 4), placeholder: I18n.t('pages.events.form.date_placeholder')
-  = form_group do
-    = f.label I18n.t('models.event.fields.start_time')
-    .Form__time-field-group
-      = f.select :start_time_hr, hours_for_form, selected: (hour_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
-      = f.select :start_time_min, minutes_for_form, selected: (minute_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
-      = f.select :start_time_period, %w(am pm), selected: (period_from_time(@event.start_time.in_time_zone(@event.time_zone)) unless @event.start_time.nil?)
-  = form_group do
-    = f.label I18n.t('models.event.fields.end_date')
-    = f.date_field :end_date, start_year: DateTime.now.year, end_year: (DateTime.now.year + 4), placeholder: I18n.t('pages.events.form.date_placeholder')
-  = form_group do
-    = f.label I18n.t('models.event.fields.end_time')
-    .Form__time-field-group
-      = f.select :end_time_hr, hours_for_form, selected: (hour_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
-      = f.select :end_time_min, minutes_for_form, selected: (minute_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
-      = f.select :end_time_period, %w(am pm), selected: (period_from_time(@event.end_time.in_time_zone(@event.time_zone)) unless @event.end_time.nil?)
-  = form_group do
-    = f.label I18n.t('models.event.fields.time_zone')
-    = f.time_zone_select :time_zone, Event.preferred_time_zones
+  .Form__row
+    .Form__column--full
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.name')
+        = f.text_field :name
+  .Form__row
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.category')
+        = f.select :category, options_for_select(Event.permitted_categories)
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.fee')
+        = f.number_field :fee, value: number_to_currency(f.object.fee.to_f, delimiter: '', unit: ''), step: 0.01
+  .Form__row
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.location')
+        = f.collection_select :location_id, @user.locations.all, :id, ->(location){ location.name }
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.time_zone')
+        = f.time_zone_select :time_zone, Event.preferred_time_zones
+  .Form__row
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.start_date')
+        = f.text_field :start_date, placeholder: I18n.t('pages.events.form.date_placeholder'), data: { controller: 'flatpickr', flatpickr_date_format: 'M j, Y h:i K', flatpickr_default_date: @event.start_date, flatpickr_min_date: Time.zone.now, flatpickr_enable_time: true }
+    .Form__column--half
+      = form_group modifier: 'boxed' do
+        = f.label I18n.t('models.event.fields.end_date')
+        = f.text_field :end_date, placeholder: I18n.t('pages.events.form.date_placeholder'), data: { controller: 'flatpickr', flatpickr_date_format: 'M j, Y h:i K', flatpickr_default_date: @event.end_date, flatpickr_min_date: Time.zone.now, flatpickr_enable_time: true }
+  .Form__row
+    = form_group modifier: 'boxed' do
+      = f.label I18n.t('models.event.fields.summary')
+      = f.rich_text_area :summary
   = form_action do
     = f.submit I18n.t('pages.events.form.form_action'), class: 'Button--solid-primary'

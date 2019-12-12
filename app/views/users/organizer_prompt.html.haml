@@ -1,5 +1,5 @@
 = title I18n.t('pages.users.organizer_prompt.title')
-= card classes: 'Card--medium' do
+= card do
   = card_body do
     = card_title I18n.t('pages.users.organizer_prompt.title')
     = link_to I18n.t('pages.users.organizer_prompt.yes_link'), user_path(@user, user: { organizer: true }), class: 'BoxLink--dark', method: :patch

@@ -1,7 +1,7 @@
 = card modifier: 'bottomBorder' do
   = render partial: 'events/event_header', locals: { event: event }
   = card_body do
-    = card_title event.name, modifier: 'spaced'
+    = card_title event.name
     = info_box do
       = info_box_group do
         = info_box_label I18n.t('models.event.fields.location')
@@ -11,11 +11,11 @@
       = info_box_group do
         = info_box_label I18n.t('models.event.fields.starts_at')
         = info_box_content do
-          #{format_date(event.start_date)} at #{format_time(event.start_time, event.time_zone)}
+          = format_date_and_zone(event.start_date, event.time_zone)
     = info_box do
       = info_box_group do
         = info_box_label I18n.t('models.event.fields.ends_at')
         = info_box_content do
-          #{format_date(event.end_date)} at #{format_time(event.end_time, event.time_zone)}
+          = format_date_and_zone(event.end_date, event.time_zone)
     %p.u-Text--center
       = link_to I18n.t('pages.events.index.details_link'), event_path(event), class: 'Button--solid-dark'

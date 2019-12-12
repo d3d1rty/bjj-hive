@@ -7,7 +7,6 @@
 # This controller provides methods inherited by other controllers.
 class ApplicationController < ActionController::Base
   include Clearance::Controller
-  include HiveTime
 
   ##
   # POST /accept_cookies
