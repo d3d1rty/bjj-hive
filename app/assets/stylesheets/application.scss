@@ -48,11 +48,24 @@ $heading-regular-font-family: 'poppinsregular';
 
 @import "mushaka-design/src/main";
 
-@import "layout";
-@import "pages";
+@import "custom/layout";
+@import "custom/pages";
+
+trix-toolbar {
+  margin: spacing-size(2);
+
+  button.trix-button--icon-code,
+  button.trix-button--icon-increase-nesting-level,
+  button.trix-button--icon-decrease-nesting-level {
+    display: none;
+  }
+}
 
 trix-editor {
   @extend %basic-form-field-styling;
+
+  margin: spacing-size(2);
+  min-height: 300px;
 }
 
 .trix-content {
@@ -81,4 +94,139 @@ trix-editor {
   ul {
     @extend %default-ulist-styling;
   }
+}
+
+.Form__group--boxed {
+  border: 2px solid $black;
+  padding: spacing-size(2);
+
+  label {
+    font-family: $heading-semibold-font-family;
+    text-transform: uppercase;
+    color: $black;
+  }
+
+  select {
+    text-align: center;
+  }
+}
+
+.Form__time-field-group {
+  display: inline-flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+  margin: spacing-size(3) auto;
+
+  @include breakpoint-m {
+    width: 100%;
+  }
+
+  select {
+    flex: 100%;
+    margin: spacing-size(2) auto;
+    text-align: center;
+
+    @include breakpoint-s {
+      flex: 10%;
+      margin: auto spacing-size(1);
+    }
+  }
+}
+
+.u-Element {
+  &--long {
+    @include breakpoint-s {
+      width: 80% !important;
+      min-width: 390px;
+    }
+
+    @include breakpoint-m {
+      width: 70% !important;
+      min-width: 420px;
+    }
+
+    @include breakpoint-l {
+      width: 60% !important;
+      min-width: 440px;
+    }
+  }
+
+  &--medium {
+    @include breakpoint-s {
+      width: 60% !important;
+      min-width: 310px;
+    }
+
+    @include breakpoint-m {
+      width: 50% !important;
+      min-width: 331px;
+    }
+
+    @include breakpoint-l {
+      width: 40% !important;
+      min-width: 304px;
+    }
+  }
+
+  &--short {
+    @include breakpoint-s {
+      width: 40% !important;
+      min-width: 198px;
+    }
+
+    @include breakpoint-m {
+      width: 30% !important;
+      min-width: 195px;
+    }
+
+    @include breakpoint-l {
+      width: 20% !important;
+      min-width: 147px;
+    }
+  }
+}
+
+.Form {
+  &__row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: spacing-size(4);
+    margin-bottom: spacing-size(4);
+
+    .Form__group,
+    .Form__group--boxed {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__column {
+    &--full {
+      width: 100%;
+    }
+
+    &--half {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 49%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.flatpickr-input {
+  cursor: pointer !important;
+  background-color: $white !important;
 }

@@ -17,9 +17,9 @@ class EventsController < ApplicationController
   # GET /events
   def index
     @events = if params[:search]
-                Event.not_past.search(params[:search]).page(params[:page]).per(10).order(start_date: :asc, start_time: :asc)
+                Event.not_past.search(params[:search]).page(params[:page]).per(10).order(start_date: :asc)
               else
-                Event.not_past.page(params[:page]).per(10).order(start_date: :asc, start_time: :asc)
+                Event.not_past.page(params[:page]).per(10).order(start_date: :asc)
               end
   end
 
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   ##
   # POST /users/:user_id/events
   def create
-    @event = @user.events.create(event_from_params)
+    @event = @user.events.create(event_params)
 
     if @event.save
       track('Event Creation Success', @event.attributes)
@@ -57,8 +57,8 @@ class EventsController < ApplicationController
   ##
   # PATCH/PUT /users/:user_id/events/:event_id
   def update
-    if @event.update(event_from_params)
-      track('Event Update Success', event_from_params)
+    if @event.update(event_params)
+      track('Event Update Success', event_params)
       redirect_to event_path(@event), notice: I18n.t('notices.event.update')
     else
       track('Event Update Failure', @event.errors.messages)
@@ -82,54 +82,9 @@ class EventsController < ApplicationController
   private
 
   ##
-  # Provide a hash of the event from parameters.
-  def event_from_params
-    {
-      name: event_params[:name],
-      category: event_params[:category],
-      summary: event_params[:summary],
-      fee: event_params[:fee],
-      start_date: event_params[:start_date],
-      start_time: start_time_from_params,
-      end_date: event_params[:end_date],
-      end_time: end_time_from_params,
-      time_zone: event_params[:time_zone],
-      user_id: event_params[:user_id],
-      location_id: event_params[:location_id]
-    }
-  end
-
-  ##
-  # Retrieve start time from provided parameters.
-  def start_time_from_params
-    if event_params[:start_time].present?
-      event_params[:start_time]
-    else
-      params_to_time(event_params[:start_time_hr],
-                     event_params[:start_time_min],
-                     event_params[:start_time_period],
-                     event_params[:time_zone])
-    end
-  end
-
-  ##
-  # Retrieve end time from provided parameters.
-  def end_time_from_params
-    if event_params[:end_time].present?
-      event_params[:end_time]
-    else
-      params_to_time(event_params[:end_time_hr],
-                     event_params[:end_time_min],
-                     event_params[:end_time_period],
-                     event_params[:time_zone])
-    end
-  end
-
-  ##
   # Define permitted parameters.
   def permitted_event_params
-    %i[name category summary fee start_date start_time start_time_hr start_time_min start_time_period
-       end_date end_time end_time_hr end_time_min end_time_period time_zone user_id location_id]
+    %i[name category summary fee start_date end_date time_zone user_id location_id]
   end
 
   ##

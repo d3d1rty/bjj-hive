@@ -1,4 +1,5 @@
 FROM ruby:2.6.3
+USER root
 
 RUN apt-get update -qy
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -

@@ -4,10 +4,10 @@
   = card_body do
     = card_title I18n.t('pages.sessions.new.title')
     = form_for :session, url: session_path, class: 'Form' do |f|
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.session.fields.email')
         = f.text_field :email
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.session.fields.password')
         = f.password_field :password
       = form_action do

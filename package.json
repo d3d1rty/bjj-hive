@@ -2,14 +2,11 @@
   "name": "bjj-hive",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "@rails/actiontext": "^6.0.0",
     "@rails/webpacker": "^4.0.2",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "mushaka-design": "0.3.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "mushaka-design": "1.0.0",
+    "stimulus": "^1.1.1",
+    "stimulus-flatpickr": "^1.2.1",
     "trix": "^1.0.0"
   },
   "devDependencies": {

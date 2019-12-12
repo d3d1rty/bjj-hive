@@ -3,7 +3,7 @@
 = card do
   = card_body do
     = form_for :password, url: passwords_path, class: 'Form' do |form|
-      = form_group do
+      = form_group modifier: 'boxed' do
         = form.label :email
         = form.text_field :email, type: 'email'
       = form_action do

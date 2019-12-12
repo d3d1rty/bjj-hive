@@ -3,17 +3,17 @@
   = card_body do
     = card_title I18n.t('pages.users.edit.title')
     = form_for @user, class: 'Form' do |f|
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.user.fields.first_name')
         = f.text_field :first_name
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.user.fields.last_name')
         = f.text_field :last_name
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.user.fields.handle')
         = f.text_field :handle
         %small.u-Text--muted The user name that will display to others.
-      = form_group do
+      = form_group modifier: 'boxed' do
         = f.label I18n.t('models.user.fields.email')
         = f.text_field :email, type: 'email'
       = form_action do

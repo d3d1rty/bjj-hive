@@ -18,13 +18,7 @@ describe 'events/edit', type: :view do
       assert_select 'trix-editor'
       assert_select 'input[name=?]', 'event[fee]'
       assert_select 'input[name=?]', 'event[start_date]'
-      assert_select 'select[name=?]', 'event[start_time_hr]'
-      assert_select 'select[name=?]', 'event[start_time_min]'
-      assert_select 'select[name=?]', 'event[start_time_period]'
       assert_select 'input[name=?]', 'event[end_date]'
-      assert_select 'select[name=?]', 'event[end_time_hr]'
-      assert_select 'select[name=?]', 'event[end_time_min]'
-      assert_select 'select[name=?]', 'event[end_time_period]'
       assert_select 'select[name=?]', 'event[time_zone]'
     end
   end

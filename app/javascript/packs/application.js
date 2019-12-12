@@ -13,6 +13,9 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import 'controllers'
+require('trix')
+require('@rails/actiontext')
 
 function activateMenu () {
   let toggle = document.getElementById('js-navbar-toggle')
@@ -64,10 +67,8 @@ function favoriteStars () {
 
 function addReply (parent, information) {
   let replyToHiddenField = document.getElementById('js-reply-to-hidden')
-  let replyToDisplayField = document.getElementById('js-reply-to-display')
 
   replyToHiddenField.setAttribute('value', parent)
-  replyToDisplayField.setAttribute('value', information)
 
   window.location.href = '#js-comment-reply-form'
 }
@@ -84,6 +85,3 @@ document.addEventListener('turbolinks:load', () => {
     })
   })
 }, false)
-
-require("trix")
-require("@rails/actiontext")

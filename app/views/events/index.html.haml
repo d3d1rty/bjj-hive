@@ -1,8 +1,8 @@
 = title I18n.t('pages.events.index.title')
 = description I18n.t('pages.events.index.description')
 = form_tag events_path, method: 'get', class: 'EventSearchForm' do
-  = text_field_tag :search, params[:search], placeholder: I18n.t('pages.events.index.search_placeholder')
-  = button_tag I18n.t('pages.events.index.search_button'), class: 'Button--solid-dark'
+  = text_field_tag :search, params[:search], placeholder: I18n.t('pages.events.index.search_placeholder'), class: 'InlineForm__input'
+  = button_tag I18n.t('pages.events.index.search_button'), class: 'InlineForm__action Button--solid-dark'
 - if signed_in? && (current_user.organizer? || current_user.admin?)
   = ribbon do
     = link_to new_user_event_path(current_user), class: 'Button--outline-primary' do
