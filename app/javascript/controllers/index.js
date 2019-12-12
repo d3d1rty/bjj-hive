@@ -3,7 +3,6 @@
 
 import { Application } from 'stimulus'
 import Flatpickr from 'stimulus-flatpickr'
-import 'flatpickr/dist/themes/dark.css'
 import { definitionsFromContext } from 'stimulus/webpack-helpers'
 
 const application = Application.start()
