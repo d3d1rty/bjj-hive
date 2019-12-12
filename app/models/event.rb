@@ -89,7 +89,7 @@ class Event < ApplicationRecord
   ##
   # Validation for start/end date.
   def start_must_come_before_end
-    errors.add(:start_date, I18n.t('models.event.validations.start_before_end')) if date_field_present? && start_date > end_date
+    errors.add(:start_date, I18n.t('models.event.validations.start_before_end')) if date_field_present? && self[:start_date] > self[:end_date]
   end
 
   ##
