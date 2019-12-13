@@ -307,3 +307,24 @@ trix-editor {
 .js-search-panel-toggle {
   margin-right: spacing-size(2);
 }
+
+.Grid {
+  width: 97%;
+  margin: 0 auto;
+}
+
+.Grid__item, .Grid__sizer {
+  width: 100%;
+
+  @include breakpoint-m {
+    width: 49%;
+  }
+}
+
+.Grid__gutterSizer {
+  width: 2%;
+}
+
+.Grid__item {
+  margin-bottom: 12px;
+}

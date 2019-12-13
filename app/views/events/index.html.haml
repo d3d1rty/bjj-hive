@@ -34,10 +34,12 @@
     = link_to new_user_event_path(current_user), class: 'Button--outline-primary' do
       %i{ class: 'fas fa-plus-circle' }
       = I18n.t('pages.events.index.create_button')
-= container do
+.Grid
+  .Grid__sizer
+  .Grid__gutterSizer
   - @events.each do |event|
     = render partial: 'events/event', locals: { event: event }
-  = paginator do
-    = link_to_prev_page @events, I18n.t('pages.events.index.prev_link')
-    = link_to_next_page @events, I18n.t('pages.events.index.next_link')
-    %p= page_entries_info @events
+= paginator do
+  = link_to_prev_page @events, I18n.t('pages.events.index.prev_link')
+  = link_to_next_page @events, I18n.t('pages.events.index.next_link')
+  %p= page_entries_info @events
