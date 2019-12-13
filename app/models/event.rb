@@ -41,9 +41,10 @@ class Event < ApplicationRecord
 
   ##
   # Provides search query for event model
-  def self.location_within(query, radius = 50)
+  def self.location_within(query, radius)
     return all if query.blank?
 
+    radius = radius.blank? ? 50 : radius
     joins(:location).near(query, radius)
   end
 
