@@ -14,6 +14,8 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 import 'controllers'
+import Masonry from 'masonry-layout'
+
 require('trix')
 require('@rails/actiontext')
 
@@ -109,5 +111,12 @@ document.addEventListener('turbolinks:load', () => {
     link.addEventListener('click', (e) => {
       addReply(e.target.dataset.parent, e.target.dataset.information)
     })
+  })
+
+  let msnry = new Masonry( '.Grid', {
+    columnWidth: '.Grid__sizer',
+    gutter: '.Grid__gutterSizer',
+    itemSelector: '.Grid__item',
+    percentPosition: true,
   })
 }, false)
