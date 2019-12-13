@@ -209,6 +209,22 @@ trix-editor {
       width: 100%;
     }
 
+    &--twoThirds {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 65%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
     &--half {
       width: 100%;
 
@@ -224,10 +240,70 @@ trix-editor {
         }
       }
     }
+
+    &--third {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 32%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 
 .flatpickr-input {
   cursor: pointer !important;
   background-color: $white !important;
+}
+
+.SearchPanel {
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: opacity .3s ease, max-height .6s linear;
+  width: 100%;
+  background-color: $white;
+  padding: 0;
+
+  &--opened {
+    visibility: visible;
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height .5s linear, opacity .3s linear .1s;
+    padding-bottom: spacing-size(4);
+    border-bottom: 1px solid grayscale-color(40);
+  }
+
+  .Form {
+    max-width: 1000px;
+
+    &__row {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &__column--third {
+      margin-bottom: 0;
+    }
+
+    &__group {
+      label {
+        font-family: $heading-semibold-font-family;
+        text-transform: uppercase;
+        color: $black;
+      }
+    }
+  }
+}
+
+.js-search-panel-toggle {
+  margin-right: spacing-size(2);
 }

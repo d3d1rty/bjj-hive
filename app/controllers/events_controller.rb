@@ -16,11 +16,12 @@ class EventsController < ApplicationController
   ##
   # GET /events
   def index
-    @events = if params[:search]
-                Event.not_past.search(params[:search]).page(params[:page]).per(10).order(start_date: :asc)
-              else
-                Event.not_past.page(params[:page]).per(10).order(start_date: :asc)
-              end
+    @q = Event.not_past
+              .by_category(params[:category])
+              .location_within(params[:location], params[:search_radius])
+              .order(start_date: :asc)
+              .ransack(params[:q])
+    @events = @q.result.page(params[:page]).per(10)
   end
 
   ##

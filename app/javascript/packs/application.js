@@ -29,6 +29,31 @@ function activateMenu () {
   }
 }
 
+function activateSearchPanel () {
+  let panelToggles = document.querySelectorAll('.js-search-panel-toggle')
+
+  panelToggles.forEach((link) => {
+    link.addEventListener('click', togglePanel)
+  })
+
+  function togglePanel (e) {
+    e.preventDefault()
+
+    let panel = document.getElementsByClassName('SearchPanel')[0]
+    let siblingLink
+    let siblingLinks = siblingElements(e.target)
+
+    panel.classList.toggle('SearchPanel--opened')
+    e.target.style.display = 'none'
+    for (let link of siblingLinks) {
+      if (link.classList.contains('js-search-panel-toggle')) {
+        siblingLink = link
+      }
+    }
+    siblingLink.style.display = ''
+  }
+}
+
 function siblingElements (element) {
   return Array.prototype.filter.call(element.parentNode.children, (sibling) => {
     return sibling !== element
@@ -75,6 +100,7 @@ function addReply (parent, information) {
 
 document.addEventListener('turbolinks:load', () => {
   activateMenu()
+  activateSearchPanel()
   favoriteStars()
 
   let replyToLinks = document.querySelectorAll('.js-reply-to-link')

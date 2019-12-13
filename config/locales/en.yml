@@ -392,7 +392,8 @@ en:
       index:
         title: "Events Listing"
         description: "Find the BJJ events that you are looking for. Classes, conferences, seminars, and tournament--you can find them all here."
-        search_placeholder: "Search by location..."
+        location_search_placeholder: "Enter a city or zip code"
+        name_search_placeholder: "Enter a term to search with"
         search_button: "Search"
         create_button: "Create an Event"
         details_link: "View Details"
