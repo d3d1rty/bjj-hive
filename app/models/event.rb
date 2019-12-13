@@ -41,8 +41,16 @@ class Event < ApplicationRecord
 
   ##
   # Provides search query for event model
-  def self.search(query)
-    Event.joins(:location).near(query, 50)
+  def self.location_within(query, radius = 50)
+    return all if query.blank?
+
+    joins(:location).near(query, radius)
+  end
+
+  def self.by_category(category)
+    return all if category.blank?
+
+    where('category = ?', category)
   end
 
   ##

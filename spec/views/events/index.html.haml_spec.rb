@@ -7,6 +7,7 @@ describe 'events/index', type: :view do
 
   before do
     @events = Kaminari.paginate_array(events).page(1)
+    allow(view).to receive(:search_form_for).and_return(true)
     render
   end
 
