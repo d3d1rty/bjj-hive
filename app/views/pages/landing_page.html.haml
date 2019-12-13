@@ -3,7 +3,7 @@
 = hero do
   = hero_headline I18n.t('pages.landing_page.practitioner_hero_headline')
   = form_tag events_path, method: 'get', class: 'EventSearchForm' do
-    = text_field_tag :search, params[:search], placeholder: I18n.t('pages.events.index.search_placeholder'), class: 'InlineForm__input'
+    = text_field_tag :location, params[:location], placeholder: I18n.t('pages.events.index.location_search_placeholder'), class: 'InlineForm__input'
     = button_tag I18n.t('pages.events.index.search_button'), class: 'Button--solid-dark InlineForm__action'
 = hero modifier: 'inverted' do
   = hero_headline I18n.t('pages.landing_page.organizer_hero_headline')
