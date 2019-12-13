@@ -268,7 +268,7 @@ trix-editor {
   visibility: hidden;
   max-height: 0;
   opacity: 0;
-  transition: opacity .3s ease, max-height .6s linear;
+  transition: opacity .3s linear, padding .3s linear, max-height .5s ease-out, visibility .3s linear;
   width: 100%;
   background-color: $white;
   padding: 0;
@@ -277,7 +277,7 @@ trix-editor {
     visibility: visible;
     max-height: 1000px;
     opacity: 1;
-    transition: max-height .5s linear, opacity .3s linear .1s;
+    transition: max-height .5s linear, opacity .6s linear;
     padding-bottom: spacing-size(4);
     border-bottom: 1px solid grayscale-color(40);
   }
