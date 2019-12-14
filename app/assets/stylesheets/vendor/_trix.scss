@@ -27,6 +27,16 @@
   }
 }
 
+trix-toolbar {
+  margin: spacing-size(2);
+
+  button.trix-button--icon-code,
+  button.trix-button--icon-increase-nesting-level,
+  button.trix-button--icon-decrease-nesting-level {
+    display: none;
+  }
+}
+
 trix-toolbar .trix-button-row {
   display: flex;
   justify-content: space-between;
@@ -39,4 +49,39 @@ trix-toolbar .trix-button-group:not(:first-child).trix-button-group--history-too
 
 trix-toolbar .trix-button-group--file-tools {
   display: none;
+}
+
+trix-editor {
+  @extend %basic-form-field-styling;
+
+  margin: spacing-size(2);
+  min-height: 300px;
+}
+
+.trix-content {
+  h1 {
+    @extend %heading-4-style;
+  }
+
+  div {
+    @extend %default-body-text-styling;
+
+    a {
+      @extend %default-link-styling;
+      @include link-color-scheme(theme-color('primary'));
+    }
+  }
+
+  blockquote {
+    @extend %default-blockquote-styling;
+  }
+
+  code, pre {
+    @extend %default-body-text-styling;
+    @extend %default-code-styling;
+  }
+
+  ul {
+    @extend %default-ulist-styling;
+  }
 }
