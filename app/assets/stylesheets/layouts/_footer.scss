@@ -1,0 +1,25 @@
+.Footer {
+  margin-top: spacing-size(6);
+  margin-bottom: spacing-size(6);
+
+  &__link-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    @include breakpoint-s {
+      flex-flow: row wrap;
+    }
+  }
+
+  &__link {
+    margin: spacing-size(1);
+    padding: spacing-size(1);
+  }
+
+  &__copyright {
+    text-align: center;
+    margin: spacing-size(4);
+  }
+}

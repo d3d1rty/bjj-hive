@@ -1,0 +1,11 @@
+.FeatureCard {
+  .Card__body {
+    @include breakpoint-l {
+      height: 325px;
+    }
+
+    ul {
+      @extend %default-ulist-styling;
+    }
+  }
+}

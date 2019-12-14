@@ -1,0 +1,52 @@
+.u-Element {
+  &--long {
+    @include breakpoint-s {
+      width: 80% !important;
+      min-width: 390px;
+    }
+
+    @include breakpoint-m {
+      width: 70% !important;
+      min-width: 420px;
+    }
+
+    @include breakpoint-l {
+      width: 60% !important;
+      min-width: 440px;
+    }
+  }
+
+  &--medium {
+    @include breakpoint-s {
+      width: 60% !important;
+      min-width: 310px;
+    }
+
+    @include breakpoint-m {
+      width: 50% !important;
+      min-width: 331px;
+    }
+
+    @include breakpoint-l {
+      width: 40% !important;
+      min-width: 304px;
+    }
+  }
+
+  &--short {
+    @include breakpoint-s {
+      width: 40% !important;
+      min-width: 198px;
+    }
+
+    @include breakpoint-m {
+      width: 30% !important;
+      min-width: 195px;
+    }
+
+    @include breakpoint-l {
+      width: 20% !important;
+      min-width: 147px;
+    }
+  }
+}

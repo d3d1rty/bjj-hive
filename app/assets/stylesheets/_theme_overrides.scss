@@ -1,0 +1,153 @@
+@font-face {
+  font-family: 'open_sansregular';
+  src: asset-url('OpenSans-Regular-webfont.eot');
+  src:
+    asset-url('OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    asset-url('OpenSans-Regular-webfont.woff') format('woff'),
+    asset-url('OpenSans-Regular-webfont.ttf') format('truetype'),
+    asset-url('OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppinsbold';
+  src:
+    asset-url('poppins-bold-webfont.woff2') format('woff2'),
+    asset-url('poppins-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppinsregular';
+  src:
+    asset-url('poppins-regular-webfont.woff2') format('woff2'),
+    asset-url('poppins-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppinssemibold';
+  src:
+    asset-url('poppins-semibold-webfont.woff2') format('woff2'),
+    asset-url('poppins-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$base-font-family: 'open_sansregular';
+$heading-bold-font-family: 'poppinsbold';
+$heading-semibold-font-family: 'poppinssemibold';
+$heading-regular-font-family: 'poppinsregular';
+
+@import "mushaka-design/src/main";
+
+.Card, .Card--bottomBorder {
+  background-color: $white;
+}
+
+.Card--large {
+  @include breakpoint-s {
+    width: 90%;
+  }
+
+  @include breakpoint-m {
+    width: 85%;
+  }
+
+  @include breakpoint-l {
+    width: 80%;
+  }
+}
+
+.Card__header {
+  align-items: center;
+}
+
+.Form__group--boxed {
+  border: 2px solid $black;
+  padding: spacing-size(2);
+
+  label {
+    font-family: $heading-semibold-font-family;
+    text-transform: uppercase;
+    color: $black;
+  }
+
+  select {
+    text-align: center;
+  }
+}
+
+.Form {
+  &__row {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: spacing-size(4);
+    margin-bottom: spacing-size(4);
+
+    .Form__group,
+    .Form__group--boxed {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__column {
+    &--full {
+      width: 100%;
+    }
+
+    &--twoThirds {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 65%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &--half {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 49%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &--third {
+      width: 100%;
+
+      &:first-child {
+        margin-bottom: spacing-size(4);
+      }
+
+      @include breakpoint-s {
+        width: 32%;
+
+        &:first-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

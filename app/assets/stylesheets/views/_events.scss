@@ -1,47 +1,45 @@
-.FeatureCard {
-  .Card__body {
-    @include breakpoint-l {
-      height: 325px;
+.SearchPanel {
+  visibility: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: opacity .3s linear, padding .3s linear, max-height .5s ease-out, visibility .3s linear;
+  width: 100%;
+  background-color: $white;
+  padding: 0;
+
+  &--opened {
+    visibility: visible;
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height .5s linear, opacity .6s linear;
+    padding-bottom: spacing-size(4);
+    border-bottom: 1px solid grayscale-color(40);
+  }
+
+  .Form {
+    max-width: 1000px;
+
+    &__row {
+      margin-top: 0;
+      margin-bottom: 0;
     }
 
-    ul {
-      @extend %default-ulist-styling;
+    &__column--third {
+      margin-bottom: 0;
+    }
+
+    &__group {
+      label {
+        font-family: $heading-semibold-font-family;
+        text-transform: uppercase;
+        color: $black;
+      }
     }
   }
 }
 
-.EventSearchForm {
-  @extend .InlineForm;
-
-  width: 97%;
-  margin: auto;
-
-  @include breakpoint-m {
-    width: 70%;
-  }
-
-  @include breakpoint-l {
-    width: 50%;
-  }
-}
-
-// Theme overrides
-.Card--large {
-  @include breakpoint-s {
-    width: 90%;
-  }
-
-  @include breakpoint-m {
-    width: 85%;
-  }
-
-  @include breakpoint-l {
-    width: 80%;
-  }
-}
-
-.Card__header {
-  align-items: center;
+.js-search-panel-toggle {
+  margin-right: spacing-size(2);
 }
 
 .EventDetails {
