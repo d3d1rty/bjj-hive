@@ -1,38 +1,48 @@
 .SearchPanel {
-  visibility: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: opacity .3s linear, padding .3s linear, max-height .5s ease-out, visibility .3s linear;
-  width: 100%;
-  background-color: $white;
-  padding: 0;
-
-  &--opened {
-    visibility: visible;
-    max-height: 1000px;
-    opacity: 1;
-    transition: max-height .5s linear, opacity .6s linear;
-    padding-bottom: spacing-size(4);
-    border-bottom: 1px solid grayscale-color(40);
+  &__header {
+    text-align: right;
+    padding: spacing-size(2);
   }
 
-  .Form {
-    max-width: 1000px;
+  &__toggle {
+  }
 
-    &__row {
-      margin-top: 0;
-      margin-bottom: 0;
+  &__content {
+    visibility: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: opacity .3s linear, padding .3s linear, max-height .5s ease-out, visibility .3s linear;
+    width: 100%;
+    background-color: $white;
+    padding: 0;
+
+    &--opened {
+      visibility: visible;
+      max-height: 1000px;
+      opacity: 1;
+      transition: max-height .5s linear, opacity .6s linear;
+      padding-bottom: spacing-size(4);
+      border-bottom: 1px solid grayscale-color(40);
     }
 
-    &__column--third {
-      margin-bottom: 0;
-    }
+    .Form {
+      max-width: 1000px;
 
-    &__group {
-      label {
-        font-family: $heading-semibold-font-family;
-        text-transform: uppercase;
-        color: $black;
+      &__row {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      &__column--third {
+        margin-bottom: 0;
+      }
+
+      &__group {
+        label {
+          font-family: $heading-semibold-font-family;
+          text-transform: uppercase;
+          color: $black;
+        }
       }
     }
   }

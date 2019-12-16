@@ -50,7 +50,11 @@
       = card_footer classes: 'u-Text--right' do
         - if signed_in?
           %p
-            = link_to 'Add a Reply', '#js-comment-reply-form', class: 'js-reply-to-link Link--primary', 'data-parent': comment.id, 'data-information': comment_reply_to_info(comment), remote: true
+            = link_to 'Add a Reply', '#', class: 'js-reply-to-link Link--primary',
+                                          data: { controller: 'reply',
+                                                  action: 'reply#setReplyTo',
+                                                  'reply-parent': comment.id },
+                                          remote: true
         - unless comment.leaf?
           %p
             Replies:

@@ -1,9 +1,9 @@
-%nav.Navbar
+%nav.Navbar{ data: { controller: 'navbar' } }
   .Navbar__navbar-header
-    %a{ href: '#', id: 'js-navbar-toggle', class: 'Navbar__navbar-toggle' }
+    %a{ href: '#', id: 'js-navbar-toggle', class: 'Navbar__navbar-toggle', data: { action: 'click->navbar#toggleMenuState' } }
       = icon 'fas', 'bars'
     %span.Navbar__navbar-brand= I18n.t('app_name')
-  .Navbar__navbar-menu
+  .Navbar__navbar-menu{ data: { target: 'navbar.menu' } }
     %ul
       - if signed_in? && current_user.admin?
         %li
