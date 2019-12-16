@@ -9,13 +9,21 @@
   - if signed_in?
     %span
       %i{ class: 'fas fa-star fa-2x IconLink--primary js-favorite-star',
-          'data-url': unfavorite_user_event_path(event.user.id, event), 'data-method': 'delete',
           title: I18n.t('pages.events.event_header.unfavorite'),
-          style: "#{ 'display:none;' unless current_user.favorite_events.exists?(event: event)}"}
+          style: "#{ 'display:none;' unless current_user.favorite_events.exists?(event: event)}",
+          data: { url: unfavorite_user_event_path(event.user.id, event),
+                  method: 'delete',
+                  controller: 'favorites',
+                  target: 'favorites.toggle',
+                  action: 'click->favorites#toggleFavorite' }}
       %i{ class: 'far fa-star fa-2x IconLink--primary js-favorite-star',
-          'data-url': favorite_user_event_path(event.user.id, event), 'data-method': 'post',
           title: I18n.t('pages.events.event_header.favorite'),
-          style: "#{ 'display:none;' if current_user.favorite_events.exists?(event: event)}"}
+          style: "#{ 'display:none;' if current_user.favorite_events.exists?(event: event)}",
+          data: { url: favorite_user_event_path(event.user.id, event),
+                  method: 'post',
+                  controller: 'favorites',
+                  target: 'favorites.toggle',
+                  action: 'click->favorites#toggleFavorite' }}
       - if event.user == current_user
         = link_to edit_user_event_path(event.user.id, event), class: 'IconLink--caution' do
           %i{ class: 'fas fa-pencil-alt fa-2x', title: I18n.t('pages.events.event_header.edit') }
