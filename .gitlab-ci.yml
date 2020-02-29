@@ -6,7 +6,7 @@ services:
 variables:
   POSTGRES_DB: test_db
   POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
+  POSTGRES_PASSWORD: "password"
 
 tests:
   stage: test
